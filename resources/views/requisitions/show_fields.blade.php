@@ -1,42 +1,41 @@
-<!-- Id Field -->
-<div class="col-sm-12">
-    {!! Form::label('id', 'Id:') !!}
-    <p>{{ $requisition->id }}</p>
-</div>
-
-<!-- User Field -->
-<div class="col-sm-12">
-    {!! Form::label('user', 'User:') !!}
-    <p>{{ \App\Models\User::find($requisition->user)->name }}</p>
-</div>
-
-<!-- Item Name Field -->
-<div class="col-sm-12">
-    {!! Form::label('item_name', 'Item Name:') !!}
-    <p>{{ \App\Models\Item::find($requisition->item_name)->name}}</p>
-</div>
-
-<!-- Qty Requested Field -->
-<div class="col-sm-12">
-    {!! Form::label('qty_requested', 'Qty Requested:') !!}
-    <p>{{ $requisition->qty_requested }}</p>
-</div>
-
-<!-- Msg Field -->
-<div class="col-sm-12">
-    {!! Form::label('msg', 'Msg:') !!}
-    <p>{{ $requisition->msg }}</p>
-</div>
-
-<!-- Created At Field -->
-<div class="col-sm-12">
-    {!! Form::label('created_at', 'Created At:') !!}
-    <p>{{ $requisition->created_at }}</p>
-</div>
-
-<!-- Updated At Field -->
-<div class="col-sm-12">
-    {!! Form::label('updated_at', 'Updated At:') !!}
-    <p>{{ $requisition->updated_at }}</p>
-</div>
-
+<table class = "table table-striped table-bordered">
+    <tr>
+      <th>Description</th>
+      <th>Details</th>
+    </tr>
+    <tr>
+      <td> User</td>
+      <td>{{ \App\Models\User::find($requisition->user)->name }}</td>
+    </tr>
+    <tr>
+      <td> Item Name</td>
+      <td>{{\App\Models\Item::find($requisition->item_name)->name}}</td>
+    </tr>
+    <tr>
+      <td>Quantity Requested</td>
+      <td>{{ $requisition->qty_requested }}</td>
+    </tr>
+    <tr>
+      <td>Message</td>
+      <td>{{ $requisition->msg}}</td>
+    </tr>
+    <tr>
+        <td>Status</td>
+        <td <?php if ($requisition->status=="pending") {
+            echo"class='badge bg-warning m-2'";
+        } elseif($requisition->status=="approved") {
+            echo"class='badge bg-success m-2'";
+        }else{
+            echo"class='badge bg-danger m-2'";
+        }
+         ?> >{{ $requisition->status }}</td>
+    </tr>
+    <tr>
+      <td>Created At</td>
+      <td>{{ $requisition->created_at }}</td>
+    </tr>
+    <tr>
+      <td>Updated At</td>
+      <td>{{ $requisition->updated_at }}</td>
+    </tr>
+  </table>

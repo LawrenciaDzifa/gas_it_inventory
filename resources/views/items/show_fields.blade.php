@@ -1,31 +1,22 @@
-<!-- Id Field -->
-<div class="col-sm-12">
-    {!! Form::label('id', 'Id:') !!}
-    <p>{{ $item->id }}</p>
-
-</div>
-
-<!-- Name Field -->
-<div class="col-sm-12">
-    {!! Form::label('name', 'Name:') !!}
-    <p>{{ $item->name }}</p>
-</div>
-
-<!-- Category Field -->
-<div class="col-sm-12">
-    {!! Form::label('category', 'Category:') !!}
-    <p>{{ \App\Models\Category::find($item->category)->name}}</p>
-</div>
-
-<!-- Created At Field -->
-<div class="col-sm-12">
-    {!! Form::label('created_at', 'Created At:') !!}
-    <p>{{ $item->created_at }}</p>
-</div>
-
-<!-- Updated At Field -->
-<div class="col-sm-12">
-    {!! Form::label('updated_at', 'Updated At:') !!}
-    <p>{{ $item->updated_at }}</p>
-</div>
-
+<table class = "table table-striped table-bordered">
+    <tr>
+      <th>Description</th>
+      <th>Details</th>
+    </tr>
+    <tr>
+      <td> Item Name</td>
+      <td>{{ $item->name }}</td>
+    </tr>
+    <tr>
+      <td>Category</td>
+      <td>{{ \App\Models\Category::find($item->category)->name}}</td>
+    </tr>
+    <tr>
+      <td>Created At</td>
+      <td>{{ $item->created_at }}</td>
+    </tr>
+    <tr>
+      <td>Updated At</td>
+      <td>{{ $item->updated_at }}</td>
+    </tr>
+  </table>

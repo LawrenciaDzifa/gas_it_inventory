@@ -1,24 +1,18 @@
-<!-- Id Field -->
-<div class="col-sm-12">
-    {!! Form::label('id', 'Id:') !!}
-    <p>{{ $category->id }}</p>
-</div>
-
-<!-- Name Field -->
-<div class="col-sm-12">
-    {!! Form::label('name', 'Name:') !!}
-    <p>{{ $category->name }}</p>
-</div>
-
-<!-- Created At Field -->
-<div class="col-sm-12">
-    {!! Form::label('created_at', 'Created At:') !!}
-    <p>{{ $category->created_at }}</p>
-</div>
-
-<!-- Updated At Field -->
-<div class="col-sm-12">
-    {!! Form::label('updated_at', 'Updated At:') !!}
-    <p>{{ $category->updated_at }}</p>
-</div>
-
+<table class = "table table-striped table-bordered">
+    <tr>
+      <th>Description</th>
+      <th>Details</th>
+    </tr>
+    <tr>
+      <td> Category Name</td>
+      <td>{{ $category->name }}</td>
+    </tr>
+    <tr>
+      <td>Created At</td>
+      <td>{{ $category->created_at }}</td>
+    </tr>
+    <tr>
+      <td>Updated At</td>
+      <td>{{ $category->updated_at }}</td>
+    </tr>
+  </table>

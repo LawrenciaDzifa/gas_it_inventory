@@ -1,48 +1,32 @@
-<!-- Id Field -->
-<div class="col-sm-12">
-    {!! Form::label('id', 'Id:') !!}
-    <p>{{ $stockHistory->id }}</p>
-</div>
+<table class = "table table-striped table-bordered">
+    <tr>
+      <th>Description</th>
+      <th>Details</th>
+    </tr>
+    <tr>
+      <td> Item Name</td>
+      <td>{{\App\Models\Item::find($stockHistory->item_name)->name}}</td>
+    </tr>
+    <tr>
+      <td>Category</td>
+      <td>{{ \App\Models\Category::find($stockHistory->category_name)->name}}</td>
+    </tr>
+    <tr>
+        <td>Status</td>
+        <td class="m-2 <?php echo ($stockHistory->type=='Initial stock') ? 'badge bg-warning' : 'badge bg-success'; ?> ">{{ $stockHistory->type }}</td>
+    </tr>
+    <tr>
 
-<!-- User Id Field -->
-<div class="col-sm-12">
-    {!! Form::label('user', 'User:') !!}
-    <p>{{ \App\Models\User::find($stockHistory->user)->name }}</p>
-</div>
+      <td>Quantity</td>
+      <td>{{ $stockHistory->quantity }}</td>
+    </tr>
 
-<!-- Item Name Field -->
-<div class="col-sm-12">
-    {!! Form::label('item_name', 'Item Name:') !!}
-    <p>{{ \App\Models\Item::find($stockHistory->item_name)->name}}</p>
-</div>
-
-<!-- Category Name Field -->
-<div class="col-sm-12">
-    {!! Form::label('category_name', 'Category Name:') !!}
-    <p>{{ \App\Models\Category::find($stockHistory->category_name)->name}}</p>
-</div>
-
-<!-- Quantity Field -->
-<div class="col-sm-12">
-    {!! Form::label('quantity', 'Quantity:') !!}
-    <p>{{ $stockHistory->quantity }}</p>
-</div>
-
-<!-- Date Added Field -->
-<div class="col-sm-12">
-    {!! Form::label('date_added', 'Date Added:') !!}
-    <p>{{ $stockHistory->date_added }}</p>
-</div>
-
-<!-- Created At Field -->
-<div class="col-sm-12">
-    {!! Form::label('created_at', 'Created At:') !!}
-    <p>{{ $stockHistory->created_at }}</p>
-</div>
-
-<!-- Updated At Field -->
-<div class="col-sm-12">
-    {!! Form::label('updated_at', 'Updated At:') !!}
-    <p>{{ $stockHistory->updated_at }}</p>
-</div>
-
+    <tr>
+      <td>Created At</td>
+      <td>{{ $stockHistory->created_at }}</td>
+    </tr>
+    <tr>
+      <td>Updated At</td>
+      <td>{{ $stockHistory->updated_at }}</td>
+    </tr>
+  </table>
