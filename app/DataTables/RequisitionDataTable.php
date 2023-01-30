@@ -30,7 +30,7 @@ class RequisitionDataTable extends DataTable
         })
         ->editColumn( 'status',function($requisition){
             if($requisition->status == 'pending'){
-                return '<span class="badge bg-warning"">Pending</span>';
+                return '<span class="badge bg-warning">Pending</span>';
             }elseif($requisition->status == 'approved'){
                 return '<span class="badge bg-success">Approved</span>
                 ';

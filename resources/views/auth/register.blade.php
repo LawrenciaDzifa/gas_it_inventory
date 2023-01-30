@@ -99,6 +99,22 @@
                         <div class="input-group-text"><span class="fas fa-lock"></span></div>
                     </div>
                 </div>
+                <div class="input-group mb-3">
+                    <select  name="role" class="form-control @error('role') is-invalid @enderror">
+                        <option value="">Select Role</option>
+                        <option value="user">User</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-user-tag"></span>
+                        </div>
+                    </div>
+                    @error('role')
+                    <span class="error invalid-feedback">{{ $message }}</span>
+                    @enderror
+                </div>
+
 
                 <div class="row">
                     <div class="col-8">

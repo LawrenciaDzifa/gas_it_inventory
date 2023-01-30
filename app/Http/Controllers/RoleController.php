@@ -13,6 +13,7 @@ class RoleController extends Controller
     //     return view('roles.index', compact('roles'));
     // }
 
+
     public function create(Request $request)
     {
         $name = $request->input('name');
@@ -20,4 +21,5 @@ class RoleController extends Controller
         return redirect()->back()->with('status', 'Role created successfully');
 
     }
+    
 }

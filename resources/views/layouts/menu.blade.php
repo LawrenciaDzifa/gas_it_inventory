@@ -1,4 +1,3 @@
-
 <li class="nav-item">
     <a href="{{ route('items.index') }}"
        class="nav-link {{ Request::is('items*') ? 'active' : '' }}">
@@ -6,7 +5,6 @@
         <p>Items</p>
     </a>
 </li>
-
 <li class="nav-item">
     <a href="{{ route('categories.index') }}"
        class="nav-link {{ Request::is('categories*') ? 'active' : '' }}">
@@ -14,7 +12,6 @@
         <p>Categories</p>
     </a>
 </li>
-
 <li class="nav-item dropdown">
     <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownStocks" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fa fa-database"></i>
@@ -31,8 +28,6 @@
         </a>
     </div>
 </li>
-
-
 <li class="nav-item dropdown">
     <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownRestocks" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fa fa-cart-plus"></i>
@@ -49,7 +44,6 @@
         </a>
     </div>
 </li>
-
 <li class="nav-item dropdown">
     <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownRequisitions" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fa fa-shopping-basket"></i>

@@ -1,10 +1,10 @@
 {!! Form::open(['route' => ['requisitions.destroy', $id], 'method' => 'delete']) !!}
 <div class='btn-group'>
     <a href="{{ route('requisitions.show', $id) }}" class='btn btn-default btn-xs'>
-        <i class="fa fa-eye text-primary"></i>
+        <i class="fa fa-eye "></i>
     </a>
     <a href="{{ route('requisitions.edit', $id) }}" class='btn btn-default btn-xs'>
-        <i class="fa fa-edit text-primary"></i>
+        <i class="fa fa-edit "></i>
     </a>
 
     <a href="{{ route('approve', $id) }}" class="btn btn-default btn-xs">
