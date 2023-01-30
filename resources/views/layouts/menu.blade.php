@@ -15,13 +15,23 @@
     </a>
 </li>
 
-<li class="nav-item">
-    <a href="{{ route('stocks.index') }}"
-       class="nav-link {{ Request::is('stocks*') ? 'active' : '' }}">
-       <i class="fa fa-database"></i>
+<li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownStocks" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fa fa-database"></i>
         <p>Stocks</p>
     </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdownStocks">
+        <a href="{{ route('stocks.index') }}"
+           class="dropdown-item {{ Request::is('stocks*') ? 'active' : '' }}">
+            Stock List
+        </a>
+        <a href="{{ route('stocks.create') }}"
+           class="dropdown-item {{ Request::is('stocks/create') ? 'active' : '' }}">
+            Add Stock
+        </a>
+    </div>
 </li>
+
 
 <li class="nav-item">
     <a href="{{ route('restocks.index') }}"
