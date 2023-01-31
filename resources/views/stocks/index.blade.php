@@ -7,12 +7,15 @@
                 <div class="col-sm-6">
                     <h1>Stocks</h1>
                 </div>
+                @if (Auth::user()->role == 'admin')
                 <div class="col-sm-6">
                     <a class="btn btn-primary float-right"
                        href="{{ route('stocks.create') }}">
                         Add New
                     </a>
                 </div>
+                @endif
+
             </div>
         </div>
     </section>
