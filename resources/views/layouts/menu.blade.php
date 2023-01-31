@@ -1,3 +1,5 @@
+@if(Auth::user()->role == 'admin')
+
 <li class="nav-item">
     <a href="{{ route('items.index') }}"
        class="nav-link {{ Request::is('items*') ? 'active' : '' }}">
@@ -12,6 +14,7 @@
         <p>Categories</p>
     </a>
 </li>
+@endif
 <li class="nav-item dropdown">
     <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownStocks" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fa fa-database"></i>

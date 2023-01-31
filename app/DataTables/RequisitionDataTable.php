@@ -7,7 +7,7 @@ use App\Models\Requisition;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
 use App\Models\User;
-
+use Illuminate\Support\Facades\Auth;
 
 class RequisitionDataTable extends DataTable
 {
@@ -50,8 +50,11 @@ class RequisitionDataTable extends DataTable
      */
     public function query(Requisition $model)
     {
-        return $model->newQuery();
-    }
+        if (auth()->user()->role=='admin') {
+            return $model->newQuery();
+        } else {
+            return $model->newQuery()->where('user', auth()->id());
+        }    }
 
     /**
      * Optional method if you want to use html builder.

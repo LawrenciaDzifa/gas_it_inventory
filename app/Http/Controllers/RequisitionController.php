@@ -78,17 +78,17 @@ class RequisitionController extends AppBaseController
      * @return Response
      */
     public function show($id)
-    {
+{
         $requisition = $this->requisitionRepository->find($id);
 
-        if (empty($requisition)) {
-            Flash::error('Requisition not found');
-
-            return redirect(route('requisitions.index'));
-        }
-
-        return view('requisitions.show')->with('requisition', $requisition);
+    if (empty($requisition)) {
+        Flash::error('Requisition not found');
+        return redirect(route('requisitions.index'));
     }
+
+    return view('requisitions.show')->with('requisition', $requisition);
+}
+
 
     /**
      * Show the form for editing the specified Requisition.
