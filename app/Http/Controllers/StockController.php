@@ -44,11 +44,15 @@ class StockController extends AppBaseController
      */
     public function create()
     {
-        $items = Item::pluck('name','id');
-        // dd($items);
-        $categories = Category::pluck('name', 'id');
-        return view('stocks.create')->with('categories',$categories)->with( 'items',$items);
+        if (Auth::user()->role == 'admin') {
+            $items = Item::pluck('name','id');
+            $categories = Category::pluck('name', 'id');
+            return view('stocks.create')->with('categories',$categories)->with( 'items',$items);
+        } else {
+            return redirect()->back()->withErrors(['Only admin can access this page.']);
+        }
     }
+
 
     /**
      * Store a newly created Stock in storage.
@@ -60,15 +64,19 @@ class StockController extends AppBaseController
     public function store(CreateStockRequest $request)
     {
         try {
-            // Code to insert new record
+            // code to insert new record
             $input = $request->all();
             $stock = $this->stockRepository->create($input);
-
-        } catch (\Illuminate\Database\QueryException $e) {
+            } catch (\Illuminate\Database\QueryException $e) {
             if ($e->getCode() == 23000) {
-                return back()->withErrors(['This item already has a stock record. You will have to Restock the item.'])->flash('errors', 5);
+            // error code for integrity constraint violation
+            return back()->withErrors(['This item already has a stock record. You will rather have to Restock.'])->withInput();
             }
-        }
+            }
+
+            // other code
+
+            return redirect()->route('stocks.index')->with('success', 'Stock added successfully.');
 
 
 
