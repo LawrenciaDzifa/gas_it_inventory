@@ -88,14 +88,20 @@ class RequisitionDataTable extends DataTable
      */
     protected function getColumns()
     {
-        return [
-            'user',
+        $columns= [
+
             'item_name',
             'qty_requested',
             'msg',
             'status',
         ];
+        if (auth()->user()->role == 'admin') {
+            array_unshift($columns, 'user');
+        }
+
+        return $columns;
     }
+    
 
     /**
      * Get filename for export.

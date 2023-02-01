@@ -2837,14 +2837,14 @@ input[type=button].btn-block {
   float: left;
   min-width: 10rem;
   padding: 0.5rem 0;
-  margin: 0.125rem 0 0;
+  margin: 0.3rem 0 0;
   font-size: 1rem;
-  color: #212529;
+  color: #ffffff;
   text-align: left;
   list-style: none;
-  background-color: #000000d1;
+  background-color: #fffffff7;
   background-clip: padding-box;
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  border: 0px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.175);
 }
@@ -3002,12 +3002,12 @@ input[type=button].btn-block {
 .dropdown-item:hover, .dropdown-item:focus {
   color: #fff;
   text-decoration: none;
-  background-color: #3e8d0ca8;
+  background-color: #3e8d0c;
 }
 .dropdown-item.active, .dropdown-item:active {
-  color: #fff;
+  color: #fff!important;
   text-decoration: none;
-  background-color: #3e8d0ca8;
+  background-color: #3e8d0c;
 }
 .dropdown-item.disabled, .dropdown-item:disabled {
   color: #6c757d;
@@ -3031,7 +3031,7 @@ input[type=button].btn-block {
 .dropdown-item-text {
   display: block;
   padding: 0.25rem 1rem;
-  color: #212529;
+  color: #fff;
 }
 
 .btn-group,
@@ -3811,8 +3811,11 @@ input[type=button].btn-block {
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
   color: #fff;
-  background-color: #007bff;
+  background-color: #3e8d0c;
 }
+.dropdown-item.active ~ .nav-item {
+    background-color: #3e8d0c;
+  }
 
 .nav-fill > .nav-link,
 .nav-fill .nav-item {
@@ -4149,7 +4152,7 @@ input[type=button].btn-block {
   color: rgba(0, 0, 0, 0.9);
 }
 .navbar-light .navbar-nav .nav-link {
-  color: rgba(0, 0, 0, 0.5);
+  color: rgb(242 242 242);
 }
 .navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
   color: rgba(0, 0, 0, 0.7);
@@ -10987,15 +10990,15 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
   font-size: inherit;
 }
 [class*=sidebar-dark] .brand-link {
-  border-bottom: 1px solid #fdfeff1a;
+  border-bottom: 1px solid #dee2e6;
 }
 [class*=sidebar-dark] .brand-link,
 [class*=sidebar-dark] .brand-link .pushmenu {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgb(122 123 124);
 }
 [class*=sidebar-dark] .brand-link:hover,
 [class*=sidebar-dark] .brand-link .pushmenu:hover {
-  color: #fff;
+  color: rgb(122 123 124);
 }
 [class*=sidebar-light] .brand-link {
   border-bottom: 1px solid #dee2e6;
@@ -11006,7 +11009,7 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
 }
 [class*=sidebar-light] .brand-link:hover,
 [class*=sidebar-light] .brand-link .pushmenu:hover {
-  color: #000;
+  color: rgb(122 123 124);
 }
 .brand-link .pushmenu {
   margin-right: 0.5rem;
@@ -11304,7 +11307,7 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
 }
 
 [class*=sidebar-dark-] {
-  background-color: #3e8d07;
+  background-color: #f2f2f2;
 }
 [class*=sidebar-dark-] .user-panel a:hover {
   color: #fff;
@@ -11329,7 +11332,7 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
 }
 [class*=sidebar-dark-] .nav-sidebar > .nav-item.menu-open > .nav-link, [class*=sidebar-dark-] .nav-sidebar > .nav-item:hover > .nav-link,
 [class*=sidebar-dark-] .nav-sidebar > .nav-item > .nav-link:focus {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgb(62 141 12);
   color: #fff;
 }
 [class*=sidebar-dark-] .nav-sidebar > .nav-item > .nav-link.active {
@@ -11344,10 +11347,11 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
   color: #d0d4db;
 }
 [class*=sidebar-dark-] .sidebar a {
-  color: #ffffff;
+  color: #7a7b7c;
 }
 [class*=sidebar-dark-] .sidebar a:hover, [class*=sidebar-dark-] .sidebar a:focus {
   text-decoration: none;
+  color: #fff;
 }
 
 [class*=sidebar-dark-] .nav-treeview > .nav-item > .nav-link {
@@ -11370,7 +11374,7 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
 
 .sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active,
 .sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgb(62 141 12);
     color: #fff;
 }
 .sidebar-dark-primary .nav-sidebar.nav-legacy > .nav-item > .nav-link.active,
@@ -14672,7 +14676,7 @@ body.text-sm .control-sidebar {
 }
 
 .navbar-white {
-  background-color: #f4f6f9;
+  background-color: #3e8d0e;
   color: #1f2d3d;
 }
 .navbar-white.navbar-light .form-control-navbar::-moz-placeholder {
