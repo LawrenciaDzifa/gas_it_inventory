@@ -29,8 +29,12 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    {{-- custom css --}}
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+
 </head>
-<body class="hold-transition register-page">
+<body class="hold-transition register-page" style="background-image: url({{ asset('assets/vb.jpeg') }});background-repeat: no-repeat;background-size: cover;background-position:50% 50%;
+">
 <div class="register-box">
     <div class="register-logo">
         <a href="{{ url('/home') }}"><b>{{ config('app.name') }}</b></a>
