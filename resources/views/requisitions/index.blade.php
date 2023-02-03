@@ -8,10 +8,23 @@
                     <h1>Requisitions</h1>
                 </div>
                 <div class="col-sm-6">
-                    <a class="btn btn-primary float-right"
+                    @if (Auth::user()->role == 'admin')
+                        <a class="btn btn-primary float-right"
+                           href="{{ route('requisitions.create') }}">
+                            Add New
+                        </a>
+
+                    @else
+                        <a class="btn btn-primary float-right"
+                           href="{{ route('requisitions.create') }}">
+                            Place Request
+                        </a>
+
+                    @endif
+                    {{-- <a class="btn btn-primary float-right"
                        href="{{ route('requisitions.create') }}">
                         Add New
-                    </a>
+                    </a> --}}
                 </div>
             </div>
         </div>

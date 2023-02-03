@@ -28,7 +28,11 @@
             </div>
 
             <div class="card-footer">
-                {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+                {{-- {!! Form::submit(if(auth()user()->role=='admin'? 'Save':'Place Request'), ['class' => 'btn btn-primary']) !!} --}}
+                {!! Form::submit(auth()->user()->role=='admin' ? 'Save' : 'Place Request', ['class' => 'btn btn-primary']) !!}
+
+
+
                 <a href="{{ route('requisitions.index') }}" class="btn btn-default">Cancel</a>
             </div>
 

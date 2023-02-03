@@ -94,14 +94,22 @@
                             </div>
 
                         </div>
+                        <div class="row mt-3">
+                            <div class="col-6">
+                                <a href="{{ route('register') }}" class="text-center">Register new user</a>
+                            </div>
+                            <div class="col-6">
+                                <a href="{{ route('password.request') }}" class="text-left">I forgot my password</a>
+                            </div>
+                        </div>
                     </form>
 
-                    <p class="mb-1">
-                        <a href="{{ route('password.request') }}">I forgot my password</a>
+                    {{-- <p class="mb-1">
+                        <a href="{{ route('password.request') }}">Forgot password</a>
                     </p>
                     <p class="mb-0">
-                        <a href="{{ route('register') }}" class="text-center">Register a new membership</a>
-                    </p>
+                        <a href="{{ route('register') }}" class="text-center">Register</a>
+                    </p> --}}
                 </div>
                 <!-- /.login-card-body -->
             </div>

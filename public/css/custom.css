@@ -76,7 +76,7 @@ body:before {
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -169,7 +169,7 @@ sup {
 }
 
 a {
-  color: #3e8d0c;
+  color: #666;
   text-decoration: none;
   background-color: transparent;
 }
@@ -4239,7 +4239,7 @@ input[type=button].btn-block {
   background-color: #fff;
   background-clip: border-box;
   border: 0 solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
 }
 .card > hr {
   margin-right: 0;
@@ -27371,7 +27371,7 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
 
 .login-card-body,
 .register-card-body {
-  background-color: #fff;
+  background-color: #939ba221;
   border-top: 0;
   color: #666;
   padding: 20px;

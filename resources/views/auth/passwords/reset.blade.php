@@ -30,8 +30,12 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    {{-- custom css --}}
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+
+
 </head>
-<body class="hold-transition login-page">
+<body class="hold-transition login-page" style="background-image: url({{ asset('assets/vb.jpeg') }});background-repeat: no-repeat;background-size: cover;background-position:50% 50%;">
 <div class="login-box">
     <div class="login-logo">
         <a href="{{ url('/home') }}"><b>{{ config('app.name') }}</b></a>
