@@ -135,18 +135,11 @@ class RequisitionController extends AppBaseController
         return redirect(route('requisitions.index'));
     }
 
-    //Function to approve requisition and update stock
+    //Function to approve a specific requisition and update stock
 
     public function approve( $id)
     {
-
-
-        // Validate the request data
-        // $request->validate([
-        //     'id' => 'required|exists:requisitions,id',
-        //     'new_quantity' => 'required|numeric|min:1',
-        // ]);
-        // Update the requisition's status to "approved"
+        // Update the requisition's status of a specific request to "approved"
         $requisition = Requisition::find($id);
         $requisition->status = "approved";
         $requisition->save();
@@ -162,13 +155,7 @@ class RequisitionController extends AppBaseController
         // Redirect the user back with a success message
         return redirect()->back()->with('success', 'Requisition approved and stock updated successfully.');
     }
-
-
-    // public function approve($id)
-    // {
-    //     // code to approve the record with the specified ID goes here
-
-    // }
+    // Function to decline a specific requisition
 
     public function decline($id)
     {
@@ -178,21 +165,22 @@ class RequisitionController extends AppBaseController
         // Update the requisition's status to "declined"
         $requisition->status = 'declined';
         $requisition->save();
-
-        // Retrieve the current stock for the item being requisitioned
-        // $stock = Stock::where('item_name', $requisition->item_name)->first();
-
-        // // Update the stock quantity with old quantity
-        // $stock->quantity = ($stock->quantity);
-        // $stock->save();
-
-
         // Redirect the user back to the requisition list page
         return redirect()->route('requisitions.index');
 
         // Redirect the user back with a denial message
         // return redirect()->back()->with('danger', 'Requisition has been declined. Please try again later');
     }
+    
+    // Function to search for a specific requisition
+
+    public function search(Request $request)
+{
+    $search = $request->get('search');
+    $data = Requisition::where('column_name', 'like', '%' . $search . '%')->get();
+    return view('requisition.index', ['data' => $data]);
+}
+
 
 
     /**
