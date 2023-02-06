@@ -78,6 +78,22 @@
                     <span class="error invalid-feedback">{{ $message }}</span>
                     @enderror
                 </div>
+                {{-- add phone field --}}
+                <div class="input-group mb-3">
+                    <input type="text"
+                           name="phone"
+                           value="{{ old('phone') }}"
+                           class="form-control @error('phone') is-invalid @enderror"
+                           placeholder="Phone">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-phone"></span>
+                        </div>
+                    </div>
+                    @error('phone')
+                    <span class="error invalid-feedback">{{ $message }}</span>
+                    @enderror
+                </div>
 
                 <div class="input-group mb-3">
                     <input type="password"
@@ -138,7 +154,7 @@
             </form>
 
             <a href="{{ route('login') }}" class="text-center">Existing user? Log in</a>
-            
+
         </div>
         <!-- /.form-box -->
     </div><!-- /.card -->
