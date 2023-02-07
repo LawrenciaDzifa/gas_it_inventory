@@ -64,13 +64,13 @@ class RequisitionController extends AppBaseController
         $input = $request->all();
         $stock = Stock::where('item_name', $input['item_name'])->first();
         if ($stock->quantity < $request->qty_requested) {
-            Flash::error('The quantity you are requesting is more that the quantity in stock');
+            Flash::error('The quantity you are requesting is more that the quantity in stock')->important();
             return redirect(route('requisitions.index'));
         } else {
 
             $requisition = $this->requisitionRepository->create($input);
 
-            Flash::success('Requisition saved successfully.');
+            Flash::success('Requisition saved successfully.')->important();
 
             return redirect(route('requisitions.index'));
         }
@@ -88,7 +88,7 @@ class RequisitionController extends AppBaseController
         $requisition = $this->requisitionRepository->find($id);
 
         if (empty($requisition)) {
-            Flash::error('Requisition not found');
+            Flash::error('Requisition not found')->important();
             return redirect(route('requisitions.index'));
         }
 
@@ -108,7 +108,7 @@ class RequisitionController extends AppBaseController
         $requisition = $this->requisitionRepository->find($id);
 
         if (empty($requisition)) {
-            Flash::error('Requisition not found');
+            Flash::error('Requisition not found')->important();
 
             return redirect(route('requisitions.index'));
         }
@@ -129,7 +129,7 @@ class RequisitionController extends AppBaseController
         $requisition = $this->requisitionRepository->find($id);
 
         if (empty($requisition)) {
-            Flash::error('Requisition not found');
+            Flash::error('Requisition not found')->important();
 
             return redirect(route('requisitions.index'));
         }
@@ -153,6 +153,8 @@ class RequisitionController extends AppBaseController
 
         // Retrieve the stock object using the ID
         $stock = Stock::where('item_name', $requisition->item_name)->first();
+
+
 
         // Update the stock quantity
         $stock->quantity = ($stock->quantity - $requisition->qty_requested);
@@ -204,14 +206,14 @@ class RequisitionController extends AppBaseController
         $requisition = $this->requisitionRepository->find($id);
 
         if (empty($requisition)) {
-            Flash::error('Requisition not found');
+            Flash::error('Requisition not found')->important();
 
             return redirect(route('requisitions.index'));
         }
 
         $this->requisitionRepository->delete($id);
 
-        Flash::success('Requisition deleted successfully.');
+        Flash::success('Requisition deleted successfully.')->important();
 
         return redirect(route('requisitions.index'));
     }

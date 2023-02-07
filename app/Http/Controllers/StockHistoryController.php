@@ -59,7 +59,7 @@ class StockHistoryController extends AppBaseController
 
         $stockHistory = $this->stockHistoryRepository->create($input);
 
-        Flash::success('Stock History saved successfully.');
+        Flash::success('Stock History saved successfully.')->important();
 
         return redirect(route('stockHistories.index'));
     }
@@ -76,7 +76,7 @@ class StockHistoryController extends AppBaseController
         $stockHistory = $this->stockHistoryRepository->find($id);
 
         if (empty($stockHistory)) {
-            Flash::error('Stock History not found');
+            Flash::error('Stock History not found')->important();
 
             return redirect(route('stockHistories.index'));
         }
@@ -96,7 +96,7 @@ class StockHistoryController extends AppBaseController
         $stockHistory = $this->stockHistoryRepository->find($id);
 
         if (empty($stockHistory)) {
-            Flash::error('Stock History not found');
+            Flash::error('Stock History not found')->important();
 
             return redirect(route('stockHistories.index'));
         }
@@ -117,14 +117,14 @@ class StockHistoryController extends AppBaseController
         $stockHistory = $this->stockHistoryRepository->find($id);
 
         if (empty($stockHistory)) {
-            Flash::error('Stock History not found');
+            Flash::error('Stock History not found')->important();
 
             return redirect(route('stockHistories.index'));
         }
 
         $stockHistory = $this->stockHistoryRepository->update($request->all(), $id);
 
-        Flash::success('Stock History updated successfully.');
+        Flash::success('Stock History updated successfully.')->important();
 
         return redirect(route('stockHistories.index'));
     }
@@ -141,14 +141,14 @@ class StockHistoryController extends AppBaseController
         $stockHistory = $this->stockHistoryRepository->find($id);
 
         if (empty($stockHistory)) {
-            Flash::error('Stock History not found');
+            Flash::error('Stock History not found')->important();
 
             return redirect(route('stockHistories.index'));
         }
 
         $this->stockHistoryRepository->delete($id);
 
-        Flash::success('Stock History deleted successfully.');
+        Flash::success('Stock History deleted successfully.')->important();
 
         return redirect(route('stockHistories.index'));
     }

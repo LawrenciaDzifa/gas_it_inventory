@@ -85,7 +85,7 @@ class RestockController extends AppBaseController
         // $stock->quantity += $restock->restock_qty;
         // $stock->save();
 
-        Flash::success('Restock saved successfully.');
+        Flash::success('Restock saved successfully.')->important();
 
         return redirect(route('restocks.index'));
 
@@ -109,7 +109,7 @@ class RestockController extends AppBaseController
         $restock = $this->restockRepository->find($id);
 
         if (empty($restock)) {
-            Flash::error('Restock not found');
+            Flash::error('Restock not found')->important();
 
             return redirect(route('restocks.index'));
         }
@@ -129,7 +129,7 @@ class RestockController extends AppBaseController
         $restock = $this->restockRepository->find($id);
 
         if (empty($restock)) {
-            Flash::error('Restock not found');
+            Flash::error('Restock not found')->important();
 
             return redirect(route('restocks.index'));
         }
@@ -150,14 +150,14 @@ class RestockController extends AppBaseController
         $restock = $this->restockRepository->find($id);
 
         if (empty($restock)) {
-            Flash::error('Restock not found');
+            Flash::error('Restock not found')->important();
 
             return redirect(route('restocks.index'));
         }
 
         $restock = $this->restockRepository->update($request->all(), $id);
 
-        Flash::success('Restock updated successfully.');
+        Flash::success('Restock updated successfully.')->important();
 
         return redirect(route('restocks.index'));
     }
@@ -174,14 +174,14 @@ class RestockController extends AppBaseController
         $restock = $this->restockRepository->find($id);
 
         if (empty($restock)) {
-            Flash::error('Restock not found');
+            Flash::error('Restock not found')->important();
 
             return redirect(route('restocks.index'));
         }
 
         $this->restockRepository->delete($id);
 
-        Flash::success('Restock deleted successfully.');
+        Flash::success('Restock deleted successfully.')->important();
 
         return redirect(route('restocks.index'));
     }

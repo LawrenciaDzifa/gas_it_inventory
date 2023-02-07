@@ -88,7 +88,7 @@ class StockController extends AppBaseController
         $stockHistory->item_name = $stock->item_name;
         $stockHistory->save();
 
-        Flash::success('Stock saved successfully.');
+        Flash::success('Stock saved successfully.')->important();
 
         return redirect(route('stocks.index'));
     }
@@ -105,7 +105,7 @@ class StockController extends AppBaseController
         $stock = $this->stockRepository->find($id);
 
         if (empty($stock)) {
-            Flash::error('Stock not found');
+            Flash::error('Stock not found')->important();
 
             return redirect(route('stocks.index'));
         }
@@ -129,7 +129,7 @@ class StockController extends AppBaseController
 
 
         if (empty($stock)) {
-            Flash::error('Stock not found');
+            Flash::error('Stock not found')->important();
 
             return redirect(route('stocks.index'));
         }
@@ -150,7 +150,7 @@ class StockController extends AppBaseController
         $stock = $this->stockRepository->find($id);
 
         if (empty($stock)) {
-            Flash::error('Stock not found');
+            Flash::error('Stock not found')->important();
 
             return redirect(route('stocks.index'));
         }
@@ -166,7 +166,7 @@ class StockController extends AppBaseController
         // $stockHistory->save();
 
 
-        Flash::success('Stock updated successfully.');
+        Flash::success('Stock updated successfully.')->important();
 
         return redirect(route('stocks.index'));
     }
@@ -183,14 +183,14 @@ class StockController extends AppBaseController
         $stock = $this->stockRepository->find($id);
 
         if (empty($stock)) {
-            Flash::error('Stock not found');
+            Flash::error('Stock not found')->important();
 
             return redirect(route('stocks.index'));
         }
 
         $this->stockRepository->delete($id);
 
-        Flash::success('Stock deleted successfully.');
+        Flash::success('Stock deleted successfully.')->important();
 
         return redirect(route('stocks.index'));
     }

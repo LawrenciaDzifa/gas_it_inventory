@@ -53,10 +53,11 @@ class CategoryController extends AppBaseController
     public function store(CreateCategoryRequest $request)
     {
         $input = $request->all();
+        
 
         $category = $this->categoryRepository->create($input);
 
-        Flash::success('Category saved successfully.');
+        Flash::success('Category saved successfully.')->important();
 
         return redirect(route('categories.index'));
     }
@@ -73,7 +74,7 @@ class CategoryController extends AppBaseController
         $category = $this->categoryRepository->find($id);
 
         if (empty($category)) {
-            Flash::error('Category not found');
+            Flash::error('Category not found')->important();
 
             return redirect(route('categories.index'));
         }
@@ -93,7 +94,7 @@ class CategoryController extends AppBaseController
         $category = $this->categoryRepository->find($id);
 
         if (empty($category)) {
-            Flash::error('Category not found');
+            Flash::error('Category not found')->important();
 
             return redirect(route('categories.index'));
         }
@@ -114,7 +115,7 @@ class CategoryController extends AppBaseController
         $category = $this->categoryRepository->find($id);
 
         if (empty($category)) {
-            Flash::error('Category not found');
+            Flash::error('Category not found')->important();
 
             return redirect(route('categories.index'));
         }
@@ -138,14 +139,14 @@ class CategoryController extends AppBaseController
         $category = $this->categoryRepository->find($id);
 
         if (empty($category)) {
-            Flash::error('Category not found');
+            Flash::error('Category not found')->important();
 
             return redirect(route('categories.index'));
         }
 
         $this->categoryRepository->delete($id);
 
-        Flash::success('Category deleted successfully.');
+        Flash::success('Category deleted successfully.')->important();
 
         return redirect(route('categories.index'));
     }

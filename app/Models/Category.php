@@ -50,7 +50,7 @@ class Category extends Model
     use HasFactory;
 
     public $table = 'categories';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -76,7 +76,6 @@ class Category extends Model
      * @var array
      */
     public static $rules = [
-        
     ];
 
     /**
