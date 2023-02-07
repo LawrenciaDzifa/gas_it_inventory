@@ -15,6 +15,7 @@ use App\Models\Requisition;
 use App\Models\Stock;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Laracasts\Flash\Flash as FlashFlash;
 
 class RequisitionController extends AppBaseController
 {
@@ -61,13 +62,18 @@ class RequisitionController extends AppBaseController
     public function store(CreateRequisitionRequest $request)
     {
         $input = $request->all();
+        $stock = Stock::where('item_name', $input['item_name'])->first();
+        if ($stock->quantity < $request->qty_requested) {
+            Flash::error('The quantity you are requesting is more that the quantity in stock');
+            return redirect(route('requisitions.index'));
+        } else {
 
+            $requisition = $this->requisitionRepository->create($input);
 
-        $requisition = $this->requisitionRepository->create($input);
+            Flash::success('Requisition saved successfully.');
 
-        Flash::success('Requisition saved successfully.');
-
-        return redirect(route('requisitions.index'));
+            return redirect(route('requisitions.index'));
+        }
     }
 
     /**
@@ -78,16 +84,16 @@ class RequisitionController extends AppBaseController
      * @return Response
      */
     public function show($id)
-{
+    {
         $requisition = $this->requisitionRepository->find($id);
 
-    if (empty($requisition)) {
-        Flash::error('Requisition not found');
-        return redirect(route('requisitions.index'));
-    }
+        if (empty($requisition)) {
+            Flash::error('Requisition not found');
+            return redirect(route('requisitions.index'));
+        }
 
-    return view('requisitions.show')->with('requisition', $requisition);
-}
+        return view('requisitions.show')->with('requisition', $requisition);
+    }
 
 
     /**
@@ -137,20 +143,23 @@ class RequisitionController extends AppBaseController
 
     //Function to approve a specific requisition and update stock
 
-    public function approve( $id)
+    public function approve($id)
     {
+
         // Update the requisition's status of a specific request to "approved"
         $requisition = Requisition::find($id);
         $requisition->status = "approved";
         $requisition->save();
 
-        // Retrieve the current stock for the item being requested
-        $stock = Stock::where('id',  $id)->first();
+        // Retrieve the stock object using the ID
+        $stock = Stock::where('item_name', $requisition->item_name)->first();
 
         // Update the stock quantity
         $stock->quantity = ($stock->quantity - $requisition->qty_requested);
-        $stock->save();
 
+        if (!$stock->save()) {
+            return redirect()->back()->with('error', 'Error updating stock.');
+        }
 
         // Redirect the user back with a success message
         return redirect()->back()->with('success', 'Requisition approved and stock updated successfully.');
@@ -171,15 +180,15 @@ class RequisitionController extends AppBaseController
         // Redirect the user back with a denial message
         // return redirect()->back()->with('danger', 'Requisition has been declined. Please try again later');
     }
-    
+
     // Function to search for a specific requisition
 
     public function search(Request $request)
-{
-    $search = $request->get('search');
-    $data = Requisition::where('column_name', 'like', '%' . $search . '%')->get();
-    return view('requisition.index', ['data' => $data]);
-}
+    {
+        $search = $request->get('search');
+        $data = Requisition::where('column_name', 'like', '%' . $search . '%')->get();
+        return view('requisition.index', ['data' => $data]);
+    }
 
 
 
