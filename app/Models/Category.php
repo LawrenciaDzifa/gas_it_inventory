@@ -76,6 +76,7 @@ class Category extends Model
      * @var array
      */
     public static $rules = [
+        'name' => 'unique:categories,name'
     ];
 
     /**

@@ -12,7 +12,7 @@
       <td>{{ \App\Models\Category::find($stockHistory->category_name)->name}}</td>
     </tr>
     <tr>
-        <td>Status</td>
+        <td>Stock Type</td>
         <td class="m-2 <?php echo ($stockHistory->type=='Initial stock') ? 'badge bg-warning' : 'badge bg-success'; ?> ">{{ $stockHistory->type }}</td>
     </tr>
     <tr>
