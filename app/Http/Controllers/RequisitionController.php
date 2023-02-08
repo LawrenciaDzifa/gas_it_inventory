@@ -159,13 +159,13 @@ class RequisitionController extends AppBaseController
             // Update the stock quantity
             $stock->quantity = ($stock->quantity - $requisition->qty_requested);
             $stock->save();
-            Flash::success('Requisition approved successfully.')->important();
-            return redirect()->route('requisitions.index');
             // send an sms to the user that the requisition has been approved using arkesel sms api
             $user = Auth::user()->find($requisition->user);
             $phone = $user->phone;
             $approval_sms = new SMSController();
             $approval_sms->sendSMS('Your requisition has been approved. Thank you.', $phone);
+            Flash::success('Requisition approved successfully.')->important();
+            return redirect()->route('requisitions.index');
         }
         if ($requisition->status == 'declined') {
             Flash::error('This request has already been declined and cannot be approved .')->important();
@@ -188,13 +188,13 @@ class RequisitionController extends AppBaseController
         if ($requisition->status == 'pending') {
             $requisition->status = 'declined';
             $requisition->save();
-            Flash::success('Requisition declined successfully.')->important();
-            return redirect()->route('requisitions.index');
             // send decline sms to the user using SMSController
             $user = Auth::user()->find($requisition->user);
             $phone = $user->phone;
             $decline_sms = new SMSController();
             $decline_sms->sendSMS('Your requisition has been declined. Please contact your unit head and try again later. Thank you', $phone);
+            Flash::success('Requisition declined successfully.')->important();
+            return redirect()->route('requisitions.index');
         }
         if ($requisition->status == 'declined') {
             Flash::error('This request has already been declined .')->important();
