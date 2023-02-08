@@ -69,7 +69,9 @@ class RequisitionController extends AppBaseController
         } else {
 
             $requisition = $this->requisitionRepository->create($input);
-
+            // send an sms to the user that the requisition has been approved using arkesel sms api
+            $pending_sms = new SMSController();
+            $pending_sms = $pending_sms->sendSMS('Your requisition is currently pending. You will be notified of the next status of your requisition soon. Thank you.', Auth::user()->phone);
             Flash::success('Requisition saved successfully.')->important();
 
             return redirect(route('requisitions.index'));
@@ -158,13 +160,15 @@ class RequisitionController extends AppBaseController
 
         // Update the stock quantity
         $stock->quantity = ($stock->quantity - $requisition->qty_requested);
+        $stock->save();
+        // send an sms to the user that the requisition has been approved using arkesel sms api
+        $approval_sms = new SMSController();
+        $approval_sms->sendSMS('Your requisition has been approved. Thank you.', Auth::user()->phone);
 
-        if (!$stock->save()) {
-            return redirect()->back()->with('error', 'Error updating stock.');
-        }
+        Flash::success('Requisition approved.')->important();
+        // Redirect the user back to the requisition list page with success message
+        return redirect()->route('requisitions.index');
 
-        // Redirect the user back with a success message
-        return redirect()->back()->with('success', 'Requisition approved and stock updated successfully.');
     }
     // Function to decline a specific requisition
 
