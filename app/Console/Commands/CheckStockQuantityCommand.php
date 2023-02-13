@@ -2,7 +2,9 @@
 
 namespace App\Console\Commands;
 
+use App\Http\Controllers\SMSController;
 use App\Models\Stock;
+use App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Auth;
 
@@ -43,18 +45,18 @@ class CheckStockQuantityCommand extends Command
         foreach ($stocks as $stock) {
             if ($stock->quantity < 5) {
                 $message = "Stock for " . $stock->item_name . " is less than 5. Please restock.";
-                $user = Auth::user();
+                $user = User::where('role', 1)->get();
                 if ($user != null) {
                     $phone = $user->role->admin->phone;
-                    $this->sendSms($phone, $message);
-                } else {
-                    echo "User not found";
+                    $sms = new SMSController();
+                    $sms->sendSms($message, $phone);
                 }
             }
+            \Log::info("message sent");
         }
     }
-    protected function schedule(Schedule $schedule)
-    {
-        $schedule->command(CheckStockQuantityCommand::class)->everyFiveMinutes();
-    }
+    // protected function schedule(Schedule $schedule)
+    // {
+    //     $schedule->command(CheckStockQuantityCommand::class)->everyFiveMinutes();
+    // }
 }

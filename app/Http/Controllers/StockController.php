@@ -79,24 +79,23 @@ class StockController extends AppBaseController
                 return back()->withErrors(['This item already has a stock record. You will rather have to Restock.'])->withInput();
             }
         }
-
-        // other code
+          // Push record to Stock History Table
+          $stockHistory = new StockHistory();
+          $stockHistory->quantity = $stock->quantity;
+          $stockHistory->user = Auth::user()->id;
+          $stockHistory->category_name = $stock->category_name;
+          $stockHistory->item_name = $stock->item_name;
+          $stockHistory->type='Initial Stock';
+          $stockHistory->save();
 
         return redirect()->route('stocks.index')->with('success', 'Stock added successfully.');
 
 
 
-        // Push record to Stock History Table
-        $stockHistory = new StockHistory();
-        $stockHistory->quantity = $stock->quantity;
-        $stockHistory->user = Auth::user()->id;
-        $stockHistory->category_name = $stock->category_name;
-        $stockHistory->item_name = $stock->item_name;
-        $stockHistory->save();
 
-        Flash::success('Stock saved successfully.')->important();
+        // Flash::success('Stock saved successfully.')->important();
 
-        return redirect(route('stocks.index'));
+        // return redirect(route('stocks.index'));
     }
 
     /**
