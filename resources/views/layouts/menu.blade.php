@@ -78,14 +78,12 @@
     </a>
 </li>
 @endif
-
 <li class="nav-item">
-    <a
-    {{-- href="{{ route('stockHistories.index') }}" --}}
-        class="nav-link"
-        {{-- {{ Request::is('stockHistories*') ? 'active' : '' }}" --}}
-        >
-        <i class="fa fa-archive"></i>
+    <a href="{{ route('assignments.index') }}"
+       class="nav-link {{ Request::is('assignments*') ? 'active' : '' }}">
+       <i class="fa fa-archive"></i>
         <p>Assignments</p>
     </a>
 </li>
+
+

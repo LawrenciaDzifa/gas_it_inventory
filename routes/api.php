@@ -55,3 +55,6 @@ Route::resource('requisitions', App\Http\Controllers\API\RequisitionAPIControlle
 
 
 Route::resource('restocks', App\Http\Controllers\API\RestockAPIController::class);
+
+
+Route::resource('assignments', App\Http\Controllers\API\AssignmentAPIController::class);

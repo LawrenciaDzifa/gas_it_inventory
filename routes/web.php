@@ -46,3 +46,6 @@ Route::resource('requisitions', App\Http\Controllers\RequisitionController::clas
 Route::get('/approve/{id}', [App\Http\Controllers\RequisitionController::class, 'approve'])->name('approve');
 Route::get('/decline/{id}', [App\Http\Controllers\RequisitionController::class, 'decline'])->name('decline');
 Route::resource('restocks', App\Http\Controllers\RestockController::class);
+
+
+Route::resource('assignments', App\Http\Controllers\AssignmentController::class);
