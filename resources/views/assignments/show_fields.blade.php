@@ -1,42 +1,32 @@
-<!-- Id Field -->
-<div class="col-sm-12">
-    {!! Form::label('id', 'Id:') !!}
-    <p>{{ $assignment->id }}</p>
-</div>
 
-<!-- Item Name Field -->
-<div class="col-sm-12">
-    {!! Form::label('item_name', 'Item Name:') !!}
-    <p>{{ $assignment->item_name }}</p>
-</div>
+<table class = "table table-striped table-bordered">
+    <tr>
+      <th>Description</th>
+      <th>Details</th>
+    </tr>
+    <tr>
+      <td> Item Name</td>
+      <td>{{\App\Models\Item::find($assignment->item_name)->name}}</td>
+    </tr>
+    <tr>
+      <td>Serial Number</td>
+      <td>{{ $assignment->serial_number }}</td>
+    </tr>
+    <tr>
+      <td>Quantity Assigned</td>
+      <td>{{ $assignment->qty_assigned }}</td>
+    </tr>
+    <tr>
+      <td>Assigned To</td>
+      <td>{{ $assignment->assigned_to }}</td>
+    </tr>
+    <tr>
+      <td>Created At</td>
+      <td>{{ $assignment->created_at }}</td>
+    </tr>
+    <tr>
+      <td>Updated At</td>
+      <td>{{ $assignment->updated_at }}</td>
+    </tr>
 
-<!-- Serial Number Field -->
-<div class="col-sm-12">
-    {!! Form::label('serial_number', 'Serial Number:') !!}
-    <p>{{ $assignment->serial_number }}</p>
-</div>
-
-<!-- Qty Assigned Field -->
-<div class="col-sm-12">
-    {!! Form::label('qty_assigned', 'Qty Assigned:') !!}
-    <p>{{ $assignment->qty_assigned }}</p>
-</div>
-
-<!-- Assigned To Field -->
-<div class="col-sm-12">
-    {!! Form::label('assigned_to', 'Assigned To:') !!}
-    <p>{{ $assignment->assigned_to }}</p>
-</div>
-
-<!-- Created At Field -->
-<div class="col-sm-12">
-    {!! Form::label('created_at', 'Created At:') !!}
-    <p>{{ $assignment->created_at }}</p>
-</div>
-
-<!-- Updated At Field -->
-<div class="col-sm-12">
-    {!! Form::label('updated_at', 'Updated At:') !!}
-    <p>{{ $assignment->updated_at }}</p>
-</div>
-
+  </table>

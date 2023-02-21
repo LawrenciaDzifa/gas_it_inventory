@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateAssignmentRequest;
 use App\Repositories\AssignmentRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Item;
 use Response;
 
 class AssignmentController extends AppBaseController
@@ -40,7 +41,8 @@ class AssignmentController extends AppBaseController
      */
     public function create()
     {
-        return view('assignments.create');
+        $items = Item::pluck('name', 'id');
+        return view('assignments.create')->with('items', $items);
     }
 
     /**

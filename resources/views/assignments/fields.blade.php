@@ -1,7 +1,7 @@
 <!-- Item Name Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('item_name', 'Item Name:') !!}
-    {!! Form::text('item_name', null, ['class' => 'form-control']) !!}
+    {!! Form::select('item_name', $items, null, ['class' => 'form-control custom-select']) !!}
 </div>
 
 <!-- Serial Number Field -->

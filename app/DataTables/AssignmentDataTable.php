@@ -18,7 +18,10 @@ class AssignmentDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'assignments.datatables_actions');
+        return $dataTable->addColumn('action', 'assignments.datatables_actions')->editColumn('item_name', function ($assignment) {
+            return \App\Models\Item::find($assignment->item_name)->name;
+        });
+
     }
 
     /**
