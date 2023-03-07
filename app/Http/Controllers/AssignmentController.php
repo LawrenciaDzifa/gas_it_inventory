@@ -42,7 +42,8 @@ class AssignmentController extends AppBaseController
     public function create()
     {
         $items = Item::pluck('name', 'id');
-        return view('assignments.create')->with('items', $items);
+        $users= User::pluck('name', 'id');
+        return view('assignments.create')->with('items', $items)->with('users', $users);
     }
 
     /**
@@ -93,6 +94,9 @@ class AssignmentController extends AppBaseController
     public function edit($id)
     {
         $assignment = $this->assignmentRepository->find($id);
+        $items = Item::pluck('name', 'id');
+
+
 
         if (empty($assignment)) {
             Flash::error('Assignment not found');
@@ -100,7 +104,7 @@ class AssignmentController extends AppBaseController
             return redirect(route('assignments.index'));
         }
 
-        return view('assignments.edit')->with('assignment', $assignment);
+        return view('assignments.edit')->with('assignment', $assignment)->with('items', $items);
     }
 
     /**

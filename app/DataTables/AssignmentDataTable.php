@@ -3,6 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\Assignment;
+use App\Models\Item;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
 
