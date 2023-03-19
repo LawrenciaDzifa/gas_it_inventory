@@ -2,61 +2,28 @@
 
 namespace App\Console\Commands;
 
+use Illuminate\Console\Command;
 use App\Http\Controllers\SMSController;
 use App\Models\Stock;
 use App\Models\User;
-use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Auth;
 
 class CheckStockQuantityCommand extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $signature = 'check:stock-quantity';
+    protected $signature = 'check:stock';
+    protected $description = 'Check stock quantity and send SMS if below 5';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'Check stock quantity every 5 minutes and send sms to admin if quantity is less than 5';
-
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    /**
-     * Execute the console command.
-     *
-     * @return int
-     */
     public function handle()
     {
-        $stocks = Stock::all();
+        $stocks = Stock::where('quantity', '<', 5)->get();
+
         foreach ($stocks as $stock) {
-            if ($stock->quantity < 5) {
-                $message = "Stock for " . $stock->item_name . " is less than 5. Please restock.";
-                $user = User::where('role', 1)->get();
-                if ($user != null) {
-                    $phone = $user->role->admin->phone;
-                    $sms = new SMSController();
-                    $sms->sendSms($message, $phone);
-                }
-            }
-            \Log::info("message sent");
+            $message = "The stock quantity of " . $stock->item_name . " is below 5.";
+            $phone =  User::where('role', 'admin')->first()->phone;
+
+            $smsController = new SMSController();
+            $smsController->sendSMS($message, $phone);
+
+            $this->info("SMS sent for product $stock->item_name.");
         }
     }
-    // protected function schedule(Schedule $schedule)
-    // {
-    //     $schedule->command(CheckStockQuantityCommand::class)->everyFiveMinutes();
-    // }
 }

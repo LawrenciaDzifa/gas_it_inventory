@@ -28,7 +28,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->command('check:stock-quantity')->everyFiveMinutes();
+        $schedule->command(CheckStockQuantityCommand::class)->everyMinute();
     }
 
     /**
@@ -41,5 +41,7 @@ class Kernel extends ConsoleKernel
         $this->load(__DIR__ . '/Commands');
 
         require base_path('routes/console.php');
+        \App\Console\Commands\CheckStockQuantityCommand::class;
+
     }
 }
