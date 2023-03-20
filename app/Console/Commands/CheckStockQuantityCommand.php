@@ -15,6 +15,8 @@ class CheckStockQuantityCommand extends Command
     public function handle()
     {
         $stocks = Stock::where('quantity', '<', 5)->get();
+        // $item = Item::where('id', $stocks->item_name)->first();
+        // $item_name = $item->name;
 
         foreach ($stocks as $stock) {
             $message = "The stock quantity of " . $stock->item_name . " is below 5.";
