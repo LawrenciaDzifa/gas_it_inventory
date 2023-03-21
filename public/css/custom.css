@@ -42633,3 +42633,8 @@ a.text-muted:hover {
 .dark-mode .border-dark {
   border-color: #4b545c !important;
 }
+
+.info-box {
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.25);
+}

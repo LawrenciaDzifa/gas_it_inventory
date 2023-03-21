@@ -2,40 +2,57 @@
 {{-- @extends('stocks.index') --}}
 
 @section('content')
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Dashborad</h1>
+            </div>
+
+        </div>
+    </div>
+</section>
 <div class="container">
     <div class="container-fluid">
-        <div class="row mt-20">
-            <div class="col-12 col-sm-2 col-md-4 bg-success">
-              <!-- Column 1 content goes here -->
-              <div class=" mb-2">
-                  <span class="info-box-icon theme-bg-default "><i class="fa fa-cubes text-white"></i></span>
-                     <div class="info-box-content">
-                        <span class="info-box-text">Total Items</span>
-                        {{-- <span class="info-box-number"><?= ($dashboard['tot_vehicles']!='') ? $dashboard['tot_vehicles']:'0' ?>  </span> --}}
-                     </div>
-              </div>
+
+        <div class="row mt-4">
+            <div class="col-lg-4 col-md-6 p-4">
+                <div class="info-box bg-danger ">
+                    <span class="info-box-icon"><i class="fa fa-cubes text-white fa-2x"></i></span>
+                    <div class="info-box-content">
+
+                        <h4 class="info-box-text text-center" >Total Items</h4>
+
+                        {{-- <span class="info-box-text text-center">Total Items</span> --}}
+                        <span class="info-box-number text-center"><?= ($totalItems) ? $totalItems : '0' ?></span>
+                    </div>
+                </div>
             </div>
-            <div class="col-12 col-sm-2 col-md-4 bg-danger ">
-              <!-- Column 2 content goes here -->
-              <div class=" mb-2">
-                  <span class="info-box-icon theme-bg-default "><i class="fa fa-shopping-basket text-white"></i></span>
-                     <div class="info-box-content">
-                        <span class="info-box-text">Total Requisitions</span>
-                        {{-- <span class="info-box-number"><?= ($dashboard['tot_vehicles']!='') ? $dashboard['tot_vehicles']:'0' ?>  </span> --}}
-                     </div>
-              </div>
+            <div class="col-lg-4 col-md-6 p-4">
+                <div class="info-box bg-warning">
+                    <span class="info-box-icon"><i class="fa fa-shopping-basket text-white fa-2x"></i></span>
+                    <div class="info-box-content">
+                        <h4 class="info-box-text text-center text-white" >Total Requisitions</h4>
+
+                        {{-- <span class="info-box-text text-center text-white">Total Requisitions</span> --}}
+                        <span class="info-box-number text-center text-white"><?= ($totalRequisitions) ? $totalRequisitions : '0' ?></span>
+                    </div>
+                </div>
             </div>
-            <div class="col-12 col-sm-2 col-md-4 bg-warning">
-              <!-- Column 3 content goes here -->
-              <div class=" mb-2">
-                  <span class="info-box-icon theme-bg-default "><i class="fa fa-cubes text-white"></i></span>
-                     <div class="info-box-content">
-                        <span class="info-box-text text-white">Total Assignments</span>
-                        {{-- <span class="info-box-number"><?= ($dashboard['tot_vehicles']!='') ? $dashboard['tot_vehicles']:'0' ?>  </span> --}}
-                     </div>
-              </div>
+            <div class="col-lg-4 col-md-6 p-4">
+                <div class="info-box bg-success">
+                    <span class="info-box-icon"><i class="fa fa-cubes text-white fa-2x"></i></span>
+                    <div class="info-box-content">
+                        <h4 class="info-box-text text-center " >Total Assignments</h4>
+
+                        {{-- <span class="info-box-text text-center text-white">Total Assignments</span> --}}
+                        <span class="info-box-number text-center text-white"><?= ($totalAssignments) ? $totalAssignments : '0' ?></span>
+                    </div>
+                </div>
             </div>
+
         </div>
+
         {{-- <div class="row">
             <div class="card">
                 <div class="card-body p-0">
