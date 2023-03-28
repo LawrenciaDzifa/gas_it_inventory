@@ -22,10 +22,6 @@ class AssignmentDataTable extends DataTable
         return $dataTable->addColumn('action', 'assignments.datatables_actions')
             ->editColumn('item_name', function ($assignment) {
                 return \App\Models\Item::find($assignment->item_name)->name;
-            })
-            ->editColumn('assigned_to', function ($assignment) {
-                $user = \App\Models\User::find($assignment->assigned_to);
-                return $user ? $user->name : 'N/A';
             });
     }
 

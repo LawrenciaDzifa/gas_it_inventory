@@ -72,7 +72,7 @@ class Assignment extends Model
     use HasFactory;
 
     public $table = 'assignments';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -104,8 +104,6 @@ class Assignment extends Model
      * @var array
      */
     public static $rules = [
-        
+        'serial_number' => 'unique:assignments,serial_number'
     ];
-
-    
 }

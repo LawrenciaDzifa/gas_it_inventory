@@ -184,13 +184,13 @@ class RequisitionController extends AppBaseController
             Flash::error('This request has already been approved.')->important();
             return redirect()->route('requisitions.index');
         }
-        // make some entries in the assignment table
-        $assignment = new Assignment();
-        $assignment->user = $requisition->user;
-        $assignment->item = $requisition->item_name;
-        $assignment->qty_assigned = $requisition->qty_requested;
-        $assignment->serial_number = 'Please edit to add serial number';
-        $assignment->save();
+    //     // make some entries in the assignment table
+    //     $assignment = new Assignment();
+    //     $assignment->user = $requisition->user;
+    //     $assignment->item = $requisition->item_name;
+    //     $assignment->qty_assigned = $requisition->qty_requested;
+    //     $assignment->serial_number = 'Please edit to add serial number';
+    //     $assignment->save();
     }
     // Function to decline a specific requisition
 

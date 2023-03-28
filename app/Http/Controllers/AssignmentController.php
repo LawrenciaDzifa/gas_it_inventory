@@ -42,8 +42,8 @@ class AssignmentController extends AppBaseController
     public function create()
     {
         $items = Item::pluck('name', 'id');
-        $users= User::pluck('name', 'id');
-        return view('assignments.create')->with('items', $items)->with('users', $users);
+        // $users= User::pluck('name', 'id');
+        return view('assignments.create')->with('items', $items);
     }
 
     /**
