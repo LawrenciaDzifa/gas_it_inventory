@@ -80,7 +80,7 @@ class RequisitionController extends AppBaseController
             $pending_sms = $pending_sms->sendSMS('Your requisition for ' . $requisition->qty_requested  . ' ' .   $item_name . ' is currently pending. You will be notified of the next status of your requisition soon. Thank you.', $phone);
             // $admin_sms = new SMSController();
             // $admin_sms = $admin_sms->sendSMS('You have a new requisition from ' . $user->name . ' for ' . $requisition->item_name . '. Please attend to it.', $admin_phone);
-            Flash::success('Requisition saved successfully.')->important();
+            Flash::success('Requisition placed successfully.')->important();
             return redirect(route('requisitions.index'));
         }
     }
