@@ -59,11 +59,7 @@
   </div>
 <div class="card">
     <div class="card-body p-10">
-
 @include('requisitions.table')
-{{-- {!! $dataTable->table(['class' => 'table table-bordered']) !!} --}}
-
-
         <div class="card-footer clearfix">
             <div class="float-right">
 
