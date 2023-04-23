@@ -1,12 +1,12 @@
 
-<h1>Laravel Filament Inventory App</h1>
+<h1>Laravel Inventory App</h1>
 	This is a simple inventory management app built with Laravel and Filament. It allows you to create, read, update, and delete inventory items, as well as view a dashboard with summary statistics.
 
 <h2>Requirements</h2>
 	<ul>
 		<li>PHP 7.4 or later</li>
 		<li>Composer</li>
-		<li>MySQL or PostgreSQL database</li>
+		<li>MySQL database</li>
 	</ul>
 
 <h2>Installation</h2>
