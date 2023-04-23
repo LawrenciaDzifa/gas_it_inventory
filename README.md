@@ -1,7 +1,7 @@
 <h1 align="center"><img src="https://assets.infyom.com/open-source/infyom-logo.png" alt="InfyOm"></h1>
 
 # Laravel Boilerplate for AdminLTE Theme
-
+<!-- 
 Laravel Boilerplate with [AdminLTE](https://adminlte.io/) Theme with [InfyOm Laravel Generator](https://github.com/InfyOmLabs/laravel-generator).
 Following things are ready to be used directly with AdminLTE Theme.
 
@@ -62,7 +62,7 @@ If you discover any security-related issues, create an issue using the issue tra
 
 ## License
 
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information. -->
 
 
 
@@ -95,7 +95,7 @@ To use the app, visit <code>http://localhost:8000</code> in your web browser. Yo
 	</ul>
 Once you're logged in, you can create, edit, and delete inventory items from the dashboard.
 
-	<h2>Development</h2>
+<h2>Development</h2>
 To contribute to the development of this app, you can follow these steps:
 	<ol>
 		<li>Fork this repository to your GitHub account.</li>
