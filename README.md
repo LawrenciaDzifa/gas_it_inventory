@@ -64,25 +64,22 @@ If you discover any security-related issues, create an issue using the issue tra
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Laravel Filament Inventory App README</title>
-</head>
-<body>
-	<h1>Laravel Filament Inventory App</h1>
-	<p>This is a simple inventory management app built with Laravel and Filament. It allows you to create, read, update, and delete inventory items, as well as view a dashboard with summary statistics.</p>
 
-	<h2>Requirements</h2>
+
+
+<h1>Laravel Filament Inventory App</h1>
+	This is a simple inventory management app built with Laravel and Filament. It allows you to create, read, update, and delete inventory items, as well as view a dashboard with summary statistics.
+
+<h2>Requirements</h2>
 	<ul>
 		<li>PHP 7.4 or later</li>
 		<li>Composer</li>
 		<li>MySQL or PostgreSQL database</li>
 	</ul>
 
-	<h2>Installation</h2>
-	<ol>
-		<li>Clone this repository to your local machine.</li>
+<h2>Installation</h2>
+<ol>
+	<li>Clone this repository to your local machine.</li>
 		<li>Copy the <code>.env.example</code> file to <code>.env</code> and update the database configuration settings.</li>
 		<li>Run <code>composer install</code> to install the required dependencies.</li>
 		<li>Run <code>php artisan key:generate</code> to generate an application key.</li>
@@ -90,16 +87,16 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 		<li>Run <code>php artisan serve</code> to start the development server.</li>
 	</ol>
 
-	<h2>Usage</h2>
-	<p>To use the app, visit <code>http://localhost:8000</code> in your web browser. You will be presented with a login screen. Use the following credentials to log in:</p>
-	<ul>
+<h2>Usage</h2>
+To use the app, visit <code>http://localhost:8000</code> in your web browser. You will be presented with a login screen. Use the following credentials to log in:
+<ul>
 		<li>Email: <code>admin@example.com</code></li>
 		<li>Password: <code>password</code></li>
 	</ul>
-	<p>Once you're logged in, you can create, edit, and delete inventory items from the dashboard.</p>
+Once you're logged in, you can create, edit, and delete inventory items from the dashboard.
 
 	<h2>Development</h2>
-	<p>To contribute to the development of this app, you can follow these steps:</p>
+To contribute to the development of this app, you can follow these steps:
 	<ol>
 		<li>Fork this repository to your GitHub account.</li>
 		<li>Clone your fork to your local machine.</li>
@@ -109,7 +106,5 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 		<li>Create a new pull request on GitHub.</li>
 	</ol>
 
-	<h2>License</h2>
-	<p>This app is open source and available under the MIT License. See the <code>LICENSE</code> file for more information.</p>
-</body>
-</html>
+<h2>License</h2>
+	This app is open source and available under the MIT License. See the <code>LICENSE</code> file for more information.
