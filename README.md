@@ -1,5 +1,10 @@
 
+![Alt text](/sreenshots/login.png "Login Page ")
+
 <h1>Laravel Inventory App</h1>
+	<img src="/screenshots/login.png" alt="Screenshot of the inventory app" />
+
+
 	This is a simple inventory management app built with Laravel and Filament. It allows you to create, read, update, and delete inventory items, as well as view a dashboard with summary statistics.
 
 <h2>Requirements</h2>
