@@ -1,5 +1,4 @@
 
-![Alt text](/sreenshots/login.png "Login Page ")
 
 <h1>Laravel Inventory App</h1>
 	<img src="/screenshots/login.png" alt="Screenshot of the inventory app" />
@@ -45,3 +44,9 @@ To contribute to the development of this app, you can follow these steps:
 
 <h2>License</h2>
 	This app is open source and available under the MIT License. See the <code>LICENSE</code> file for more information.
+    
+<h1>Laravel Inventory App</h1>
+	<img src="/screenshots/login.png" alt="Screenshot of the inventory app" />
+    <img src="/screenshots/cat.png" alt="Screenshot of the inventory app" />
+    <img src="/screenshots/create_cat.png" alt="Screenshot of the inventory app" />
+
