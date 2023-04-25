@@ -45,8 +45,19 @@ To contribute to the development of this app, you can follow these steps:
 <h2>License</h2>
 	This app is open source and available under the MIT License. See the <code>LICENSE</code> file for more information.
     
-<h1>Laravel Inventory App</h1>
-	<img src="/screenshots/login.png" alt="Screenshot of the inventory app" />
-    <img src="/screenshots/cat.png" alt="Screenshot of the inventory app" />
-    <img src="/screenshots/create_cat.png" alt="Screenshot of the inventory app" />
+<h2>Screenshots</h2>
+    <div class="row">
+        <div class=""col-md-6>
+          <img src="/screenshots/login.png" alt="Screenshot of the inventory app" />
+          <img src="/screenshots/cat.png" alt="Screenshot of the inventory app" />
+          <img src="/screenshots/create_cat.png" alt="Screenshot of the inventory app" />
+        </div>
+        <div class=""col-md-6>
+          <img src="/screenshots/items.png" alt="Screenshot of the inventory app" />
+          <img src="/screenshots/stock.png" alt="Screenshot of the inventory app" />
+          <img src="/screenshots/stk_his.png" alt="Screenshot of the inventory app" />
+        </div>
+
+    </div>
+	
 
