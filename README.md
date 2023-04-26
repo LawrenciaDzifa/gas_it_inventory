@@ -1,11 +1,10 @@
 
-![Alt text](/sreenshots/login.png "Login Page ")
 
 <h1>Laravel Inventory App</h1>
 	<img src="/screenshots/login.png" alt="Screenshot of the inventory app" />
 
 
-	This is a simple inventory management app built with Laravel and Filament. It allows you to create, read, update, and delete inventory items, as well as view a dashboard with summary statistics.
+This is a simple inventory management app built with Laravel and Filament. It allows you to create, read, update, and delete inventory items, as well as view a dashboard with summary statistics(still in development). Users are able to make requisitions for items and get SMS notifications on the status of requisitions.
 
 <h2>Requirements</h2>
 	<ul>
@@ -45,3 +44,18 @@ To contribute to the development of this app, you can follow these steps:
 
 <h2>License</h2>
 	This app is open source and available under the MIT License. See the <code>LICENSE</code> file for more information.
+    
+<h2>Screenshots</h2>
+<div class="row">
+  <div class="col-md-6">
+    <img src="/screenshots/login.png" alt="Screenshot of the inventory app" />
+    <img src="/screenshots/cat.png" alt="Screenshot of the inventory app" />
+    <img src="/screenshots/create_cat.png" alt="Screenshot of the inventory app" />
+  </div>
+  <div class="col-md-6">
+    <img src="/screenshots/items.png" alt="Screenshot of the inventory app" />
+    <img src="/screenshots/stock.png" alt="Screenshot of the inventory app" />
+    <img src="/screenshots/stock_his.png" alt="Screenshot of the inventory app" />
+  </div>
+</div>
+
