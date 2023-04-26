@@ -4,7 +4,7 @@
 	<img src="/screenshots/login.png" alt="Screenshot of the inventory app" />
 
 
-This is a simple inventory management app built with Laravel and Filament. It allows you to create, read, update, and delete inventory items, as well as view a dashboard with summary statistics.
+This is a simple inventory management app built with Laravel and Filament. It allows you to create, read, update, and delete inventory items, as well as view a dashboard with summary statistics. Users are able to make requisition of items as well.
 
 <h2>Requirements</h2>
 	<ul>
