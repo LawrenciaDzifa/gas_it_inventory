@@ -46,6 +46,9 @@ To contribute to the development of this app, you can follow these steps:
 	This app is open source and available under the MIT License. See the <code>LICENSE</code> file for more information.
     
 <h2>Screenshots</h2>
+
+   <h4>Dark Theme</h4>
+
 <div class="row">
   <div class="col-md-6">
     <img src="/screenshots/category.png" alt="Screenshot of the inventory app" />
@@ -55,7 +58,7 @@ To contribute to the development of this app, you can follow these steps:
     <img src="/screenshots/items.png" alt="Screenshot of the inventory app" />
     <img src="/screenshots/stocks.png" alt="Screenshot of the inventory app" />
     <img src="/screenshots/history.png" alt="Screenshot of the inventory app" />
-      <h3>Light Theme</h3>
+      <h4>Light Theme</h4>
     <img src="/screenshots/light_theme.png" alt="Screenshot of the inventory app" />
   </div>
 </div>
