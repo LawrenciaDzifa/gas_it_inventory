@@ -55,6 +55,7 @@ To contribute to the development of this app, you can follow these steps:
     <img src="/screenshots/items.png" alt="Screenshot of the inventory app" />
     <img src="/screenshots/stocks.png" alt="Screenshot of the inventory app" />
     <img src="/screenshots/history.png" alt="Screenshot of the inventory app" />
+      <h3>Light Theme</h3>
     <img src="/screenshots/light_theme.png" alt="Screenshot of the inventory app" />
   </div>
 </div>
