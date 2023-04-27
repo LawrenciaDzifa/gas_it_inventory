@@ -14,7 +14,6 @@ use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Tables\Actions\DeleteAction;
-use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -50,18 +49,17 @@ class StockHistoryResource extends Resource
                 TextColumn::make('user')->getStateUsing(function (Model $record) {
                     return User::find($record->user)->name;
                 }),
-                BadgeColumn::make('type')
-                    ->enum([
-                        'initial stock' => 'Initial stock',
-                        'restock' => 'Restock',
-                    ])
-                    ->colors([
-                        'warning' => 'Restock',
-                        'success' => 'Initial stock',
-                    ])
-                    ->sortable()->searchable(),
-
-
+               
+                TextColumn::make('type')->getStateUsing(function (Model $record) {
+                    $type = $record->type;
+                    $color = 'bg-gray-200 text-gray-800';
+                    if ($type == 'initial stock') {
+                        $color = 'bg-green-200 text-green-800';
+                    } else if ($type == 'restock') {
+                        $color = 'bg-yellow-200 text-yellow-800';
+                    }
+                    return '<span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium ' . $color . '">' . $type . '</span>';
+                })->html(),
                 TextColumn::make('created_at')
                     ->dateTime()->dateTime('d-M-Y'),
                 TextColumn::make('deleted_at')

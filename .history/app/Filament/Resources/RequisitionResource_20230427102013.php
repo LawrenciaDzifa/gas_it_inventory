@@ -70,11 +70,26 @@ class RequisitionResource extends Resource
                         'declined' => 'Declined',
                     ])
                     ->colors([
-                        'warning' => 'pending',
-                        'success' => 'approved',
-                        'danger' => 'declined',
-                    ])->sortable()->searchable(),
-
+                        'primary',
+                        'secondary' => 'draft',
+                        'warning' => 'reviewing',
+                        'success' => 'published',
+                        'danger' => 'rejected',
+                    ])
+                TextColumn::make('status')
+                    ->getStateUsing(function (Model $record) {
+                        $status = $record->status;
+                        $color = 'bg-gray-200 text-gray-800';
+                        if ($status == 'approved') {
+                            $color = 'bg-green-200 text-green-800';
+                        } elseif ($status == 'pending') {
+                            $color = 'bg-yellow-200 text-yellow-800';
+                        } elseif ($status == 'declined') {
+                            $color = 'bg-red-200 text-red-800';
+                        }
+                        return '<span class="inline-flex items-center px-2 py-1 rounded text-sm font-medium ' . $color . '">' . $status . '</span>';
+                    })
+                    ->html(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime('d-M-Y'),
 

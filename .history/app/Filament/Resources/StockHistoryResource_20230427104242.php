@@ -51,15 +51,15 @@ class StockHistoryResource extends Resource
                     return User::find($record->user)->name;
                 }),
                 BadgeColumn::make('type')
-                    ->enum([
-                        'initial stock' => 'Initial stock',
-                        'restock' => 'Restock',
-                    ])
-                    ->colors([
-                        'warning' => 'Restock',
-                        'success' => 'Initial stock',
-                    ])
-                    ->sortable()->searchable(),
+                ->enum([
+                    'initial stock' => 'Initial stock',
+                    'restock' => 'Restock',
+                ])
+                ->colors([
+                    'warning' => 'Restock',
+                    'success' => 'Initial stock',
+                ])
+                ->sortable()->searchable()),
 
 
                 TextColumn::make('created_at')

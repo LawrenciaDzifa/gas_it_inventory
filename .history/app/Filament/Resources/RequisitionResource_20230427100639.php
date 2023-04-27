@@ -14,7 +14,6 @@ use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Tables\Actions;
-use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\TextColumn;
 
 use Laravel\Nova\Fields\Text;
@@ -63,18 +62,20 @@ class RequisitionResource extends Resource
                 }),
                 TextColumn::make('qty_requested'),
                 TextColumn::make('msg'),
-                BadgeColumn::make('status')
-                    ->enum([
-                        'pending' => 'Pending',
-                        'approved' => 'Approved',
-                        'declined' => 'Declined',
-                    ])
-                    ->colors([
-                        'warning' => 'pending',
-                        'success' => 'approved',
-                        'danger' => 'declined',
-                    ])->sortable()->searchable(),
-
+                TextColumn::make('status')
+                    ->getStateUsing(function (Model $record) {
+                        $status = $record->status;
+                        $color = 'bg-gray-200 text-gray-800';
+                        if ($status == 'approved') {
+                            $color = 'bg-green-200 text-green-800';
+                        } elseif ($status == 'pending') {
+                            $color = 'bg-yellow-200 text-yellow-800';
+                        } elseif ($status == 'declined') {
+                            $color = 'bg-red-200 text-red-800';
+                        }
+                        return '<span class="inline-flex items-center px-2 py-1 rounded text-sm font-medium ' . $color . '">' . $status . '</span>';
+                    })
+                    ->html(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime('d-M-Y'),
 

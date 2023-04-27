@@ -73,8 +73,8 @@ class RequisitionResource extends Resource
                         'warning' => 'pending',
                         'success' => 'approved',
                         'danger' => 'declined',
-                    ])->sortable()->searchable(),
-
+                    ]),
+                
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime('d-M-Y'),
 
