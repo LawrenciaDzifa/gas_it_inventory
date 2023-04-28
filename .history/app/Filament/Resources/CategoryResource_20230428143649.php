@@ -30,7 +30,7 @@ class CategoryResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
-                    ->required()->unique()
+                    ->required()->un
                     ->maxLength(255),
             ]);
     }
