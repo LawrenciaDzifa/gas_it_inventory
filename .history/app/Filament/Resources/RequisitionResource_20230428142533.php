@@ -7,7 +7,6 @@ use App\Models\Item;
 use App\Models\Requisition;
 use App\Models\User;
 use Filament\Forms;
-use Filament\Forms\Components\Textarea as ComponentsTextarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -17,6 +16,7 @@ use Filament\Tables\Actions;
 use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Model;
+use Yajra\DataTables\Html\Editor\Fields\TextArea;
 
 class RequisitionResource extends Resource
 {
@@ -41,7 +41,7 @@ class RequisitionResource extends Resource
                     ->numeric()
                     ->minValue(1)
                     ->maxValue(100),
-                ComponentsTextarea::make('msg')
+                TextAre::make('msg')
                     ->required()
                     ->maxLength(255),
             ]);

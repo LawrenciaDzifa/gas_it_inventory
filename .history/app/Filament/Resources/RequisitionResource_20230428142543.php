@@ -17,6 +17,7 @@ use Filament\Tables\Actions;
 use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Model;
+use Yajra\DataTables\Html\Editor\Fields\TextArea;
 
 class RequisitionResource extends Resource
 {

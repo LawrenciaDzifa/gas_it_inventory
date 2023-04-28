@@ -7,7 +7,6 @@ use App\Models\Item;
 use App\Models\Requisition;
 use App\Models\User;
 use Filament\Forms;
-use Filament\Forms\Components\Textarea as ComponentsTextarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -41,7 +40,7 @@ class RequisitionResource extends Resource
                     ->numeric()
                     ->minValue(1)
                     ->maxValue(100),
-                ComponentsTextarea::make('msg')
+                TextInput::make('msg')
                     ->required()
                     ->maxLength(255),
             ]);
