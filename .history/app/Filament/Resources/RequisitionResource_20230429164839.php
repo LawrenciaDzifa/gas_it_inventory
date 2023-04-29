@@ -63,8 +63,6 @@ class RequisitionResource extends Resource
                 }),
                 TextColumn::make('qty_requested'),
                 TextColumn::make('msg'),
-                Tables\Columns\TextColumn::make('created_at')
-                ->dateTime('d-M-Y'),
                 BadgeColumn::make('status')
                     ->enum([
                         'pending' => 'Pending',
@@ -76,7 +74,8 @@ class RequisitionResource extends Resource
                         'success' => 'approved',
                         'danger' => 'declined',
                     ])->sortable()->searchable(),
-
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime('d-M-Y'),
 
             ])
             ->filters([
@@ -87,10 +86,6 @@ class RequisitionResource extends Resource
                     ->label('Approve')
                     ->icon('heroicon-o-check-circle')
                     ->color('success'),
-                Action::make('decline')
-                    ->label('Decline')
-                    ->icon('heroicon-o-x-circle')
-                    ->color('danger'),
                 Actions\EditAction::make(),
                 Actions\DeleteAction::make(),
 

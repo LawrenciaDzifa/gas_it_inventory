@@ -14,11 +14,9 @@ use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Tables\Actions;
-use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Model;
-use Yajra\DataTables\Html\Button;
 
 class RequisitionResource extends Resource
 {
@@ -63,8 +61,6 @@ class RequisitionResource extends Resource
                 }),
                 TextColumn::make('qty_requested'),
                 TextColumn::make('msg'),
-                Tables\Columns\TextColumn::make('created_at')
-                ->dateTime('d-M-Y'),
                 BadgeColumn::make('status')
                     ->enum([
                         'pending' => 'Pending',
@@ -76,27 +72,28 @@ class RequisitionResource extends Resource
                         'success' => 'approved',
                         'danger' => 'declined',
                     ])->sortable()->searchable(),
-
-
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime('d-M-Y'),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Action::make('approve')
-                    ->label('Approve')
-                    ->icon('heroicon-o-check-circle')
-                    ->color('success'),
-                Action::make('decline')
-                    ->label('Decline')
-                    ->icon('heroicon-o-x-circle')
-                    ->color('danger'),
                 Actions\EditAction::make(),
                 Actions\DeleteAction::make(),
-
-
-
-
+// add a button to the table
+                Actions\Button::make('Approve')
+                    ->message('Are you sure you want to approve this requisition?')
+                    ->danger(false)
+                    ->success(true)
+                    ->confirm('Approve')
+                    ->method('approve'),
+                Actions\Button::make('Decline')
+                    ->message('Are you sure you want to decline this requisition?')
+                    ->danger(true)
+                    ->success(false)
+                    ->confirm('Decline')
+                    ->method('decline'),
 
             ])
             ->bulkActions([

@@ -63,8 +63,7 @@ class RequisitionResource extends Resource
                 }),
                 TextColumn::make('qty_requested'),
                 TextColumn::make('msg'),
-                Tables\Columns\TextColumn::make('created_at')
-                ->dateTime('d-M-Y'),
+                
                 BadgeColumn::make('status')
                     ->enum([
                         'pending' => 'Pending',
