@@ -80,7 +80,7 @@ class AssignmentResource extends Resource
                         User::all()->pluck('name', 'id')
                     )
                     ->label('Assigned To')
-                    ->placeholder('All Users'),
+                    ->placeholder('All '),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

@@ -74,13 +74,7 @@ class AssignmentResource extends Resource
             ])
             ->filters([
 
-                // filter by user
-                Tables\Filters\SelectFilter::make('assigned_to')
-                    ->options(
-                        User::all()->pluck('name', 'id')
-                    )
-                    ->label('Assigned To')
-                    ->placeholder('All Users'),
+                
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

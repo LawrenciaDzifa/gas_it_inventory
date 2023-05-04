@@ -66,21 +66,14 @@ class AssignmentResource extends Resource
                 Tables\Columns\TextColumn::make('serial_number'),
                 Tables\Columns\TextColumn::make('qty_assigned'),
                 Tables\Columns\TextColumn::make('assigned_to')->getStateUsing(function (Model $record) {
-                    $user = User::find($record->assigned_to);
+                    $user = User::find($record->item_name);
                     return $user ? $user->name : 'Unknown';                }),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime('d-M-Y'),
 
             ])
             ->filters([
-
-                // filter by user
-                Tables\Filters\SelectFilter::make('assigned_to')
-                    ->options(
-                        User::all()->pluck('name', 'id')
-                    )
-                    ->label('Assigned To')
-                    ->placeholder('All Users'),
+                //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

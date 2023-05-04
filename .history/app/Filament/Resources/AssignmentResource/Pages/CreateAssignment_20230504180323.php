@@ -4,18 +4,11 @@ namespace App\Filament\Resources\AssignmentResource\Pages;
 
 use App\Filament\Resources\AssignmentResource;
 use Filament\Pages\Actions;
-use Filament\Resources\Pages\EditRecord;
+use Filament\Resources\Pages\CreateRecord;
 
-class EditAssignment extends EditRecord
+class CreateAssignment extends CreateRecord
 {
     protected static string $resource = AssignmentResource::class;
-
-    protected function getActions(): array
-    {
-        return [
-            Actions\DeleteAction::make(),
-        ];
-    }
     protected function getRedirectUrl(): string
     {
         return $this->getResource()::getUrl('index');
