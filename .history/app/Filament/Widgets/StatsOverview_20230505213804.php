@@ -9,9 +9,7 @@ use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Card;
 
 class StatsOverview extends BaseWidget
-
 {
-
     protected function getCards(): array
     {
         return [
@@ -20,7 +18,7 @@ class StatsOverview extends BaseWidget
 
             Card::make('Total Requisitions', Requisition::count())->icon('heroicon-o-gift'),
             Card::make('Total Assignments', Assignment::count())
-                ->icon('heroicon-o-table'),
+            ->icon('heroicon-o-table'),
 
         ];
     }

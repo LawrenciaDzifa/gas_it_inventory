@@ -16,11 +16,12 @@ class StatsOverview extends BaseWidget
     {
         return [
             Card::make('Total Items', Item::count())
-                ->icon('heroicon-o-cube'),
+                ->icon('heroicon-o-cube')
+
 
             Card::make('Total Requisitions', Requisition::count())->icon('heroicon-o-gift'),
             Card::make('Total Assignments', Assignment::count())
-                ->icon('heroicon-o-table'),
+            ->icon('heroicon-o-table'),
 
         ];
     }

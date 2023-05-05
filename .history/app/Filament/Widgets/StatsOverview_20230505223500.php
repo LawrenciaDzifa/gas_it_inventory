@@ -11,6 +11,7 @@ use Filament\Widgets\StatsOverviewWidget\Card;
 class StatsOverview extends BaseWidget
 
 {
+    // protected static ?int $sort =  1;
 
     protected function getCards(): array
     {
@@ -20,7 +21,7 @@ class StatsOverview extends BaseWidget
 
             Card::make('Total Requisitions', Requisition::count())->icon('heroicon-o-gift'),
             Card::make('Total Assignments', Assignment::count())
-                ->icon('heroicon-o-table'),
+            ->icon('heroicon-o-table'),
 
         ];
     }
