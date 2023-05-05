@@ -2,55 +2,36 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\StockResource\Pages;
-use App\Filament\Resources\StockResource\RelationManagers;
+use App\Filament\Resources\StockHistoryResource\Pages;
+use App\Filament\Resources\StockHistoryResource\RelationManagers;
 use App\Models\Category;
 use App\Models\Item;
-use App\Models\Stock;
+use App\Models\StockHistory;
+use App\Models\User;
 use Filament\Forms;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Tables\Actions\DeleteAction;
-use Filament\Tables\Actions\DeleteBulkAction;
-use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class StockResource extends Resource
+class StockHistoryResource extends Resource
 {
-    protected static ?string $model = Stock::class;
+    protected static ?string $model = StockHistory::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-chart-bar';
     protected static ?string $navigationGroup = 'Inventory Management';
-
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('item_name')
-                    ->options(
-                        Item::all()->pluck('name', 'id')
-                    )
-                    ->required()
-                    ->disablePlaceholderSelection(),
-
-                Forms\Components\Select::make('category_name')
-                    ->options(
-                        Category::all()->pluck('name', 'id')
-                    )
-                    ->required(),
-                TextInput::make('quantity')
-                ->required()
-                ->numeric()
-                ->minValue(1)
-                ->maxValue(100),
+                //
             ]);
     }
 
@@ -66,6 +47,21 @@ class StockResource extends Resource
                     return Category::find($record->category_name)->name;
                 }),
                 TextColumn::make('quantity'),
+                TextColumn::make('user')->getStateUsing(function (Model $record) {
+                    return User::find($record->user)->name;
+                }),
+                BadgeColumn::make('type')
+                    ->enum([
+                        'initial stock' => 'Initial stock',
+                        'restock' => 'Restock',
+                    ])
+                    ->colors([
+                        'warning' => 'Restock',
+                        'success' => 'Initial stock',
+                    ])
+                    ->sortable()->searchable(),
+
+
                 TextColumn::make('created_at')
                     ->dateTime()->dateTime('d-M-Y'),
 
@@ -74,16 +70,12 @@ class StockResource extends Resource
                 //
             ])
             ->actions([
-                EditAction::make(),
                 DeleteAction::make(),
-
-
             ])
             ->bulkActions([
-                DeleteBulkAction::make(),
+                Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
-
 
     public static function getRelations(): array
     {
@@ -93,15 +85,15 @@ class StockResource extends Resource
     }
     public static function canViewAny(): bool
     {
-        return auth()->user()->role=='admin';
+        return auth()->user()=='admin';
     }
 
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListStocks::route('/'),
-            'create' => Pages\CreateStock::route('/create'),
-            'edit' => Pages\EditStock::route('/{record}/edit'),
+            'index' => Pages\ListStockHistories::route('/'),
+            'create' => Pages\CreateStockHistory::route('/create'),
+            'edit' => Pages\EditStockHistory::route('/{record}/edit'),
         ];
     }
 }

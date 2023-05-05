@@ -49,12 +49,12 @@ class RequisitionResource extends Resource
                     ->maxLength(255),
             ]);
     }
-    // public static function query()
-    // {
-    //     return Auth::user()->role == 'admin'
-    //         ? Requisition::query()
-    //         : Requisition::query()->where('user', Auth::user()->id);
-    // }
+    public static function query()
+    {
+        return Auth::user()->role == 'admin'
+            ? Requisition::query()
+            : Requisition::query()->where('user', Auth::user()->id);
+    }
 
     public static function table(Table $table): Table
 
@@ -122,20 +122,7 @@ class RequisitionResource extends Resource
             //
         ];
     }
-    // public static function canViewAny(): bool
-    // {
-    //    return auth()->user()->role == 'admin';
-    // }
-
-
-    // public function query(Requisition $model)
-    // {
-    //     if (auth()->user()->role == 'admin') {
-    //         return $model->newQuery();
-    //     } else {
-    //         return $model->newQuery()->where('user', auth()->id());
-    //     }
-    // }
+    
     public static function getPages(): array
     {
         return [

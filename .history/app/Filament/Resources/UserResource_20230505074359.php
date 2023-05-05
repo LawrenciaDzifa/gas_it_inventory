@@ -90,7 +90,7 @@ class UserResource extends Resource
     }
     public static function canViewAny(): bool
     {
-        return auth()->user()->role=='admin';
+        return auth()->user()=='admin';
     }
 
     public static function getPages(): array

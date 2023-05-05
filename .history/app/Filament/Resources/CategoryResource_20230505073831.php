@@ -63,9 +63,9 @@ class CategoryResource extends Resource
             //
         ];
     }
-    public static function canViewAny(): bool
+    public statict function canView(): bool
     {
-        return auth()->user()->role=='admin';
+        return true;
     }
 
     public static function getPages(): array

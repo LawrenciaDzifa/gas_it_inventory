@@ -122,10 +122,14 @@ class RequisitionResource extends Resource
             //
         ];
     }
-    // public static function canViewAny(): bool
-    // {
-    //    return auth()->user()->role == 'admin';
-    // }
+    public static function canViewAny(): bool
+    {
+        if (auth()->user()->role == 'admin') {
+            return $model->newQuery();
+        } else {
+            return $model->newQuery()->where('user', auth()->id());
+        }
+    }
 
 
     // public function query(Requisition $model)
