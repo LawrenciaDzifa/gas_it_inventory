@@ -42,6 +42,9 @@ class UserResource extends Resource
                     ->tel()
                     ->required()
                     ->maxLength(20),
+                // Forms\Components\TextInput::make('role')
+                //     ->required()
+                //     ->maxLength(255),
                 Select::make('roles')->relationship('roles', 'name')->preload()->multiple()->required(),
                 Forms\Components\TextInput::make('password')
                     ->password()
@@ -86,7 +89,7 @@ class UserResource extends Resource
     }
     public static function canViewAny(): bool
     {
-        return auth()->user()->role == 'admin';
+        return auth()->user()->role=='admin';
     }
 
     public static function getPages(): array

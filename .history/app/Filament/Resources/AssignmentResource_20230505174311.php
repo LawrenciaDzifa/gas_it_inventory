@@ -46,7 +46,7 @@ class AssignmentResource extends Resource
                     ->numeric()
                     ->minValue(1)
                     ->maxValue(100),
-                Forms\Components\Select::make('assigned_to')
+                    Forms\Components\Select::make('assigned_to')
                     ->options(
                         User::all()->pluck('name', 'id')
                     )
@@ -62,14 +62,12 @@ class AssignmentResource extends Resource
                 Tables\Columns\TextColumn::make('id'),
                 Tables\Columns\TextColumn::make('item_name')->getStateUsing(function (Model $record) {
                     $item = Item::find($record->item_name);
-                    return $item ? $item->name : 'Unknown';
-                }),
+                    return $item ? $item->name : 'Unknown';                }),
                 Tables\Columns\TextColumn::make('serial_number'),
                 Tables\Columns\TextColumn::make('qty_assigned'),
                 Tables\Columns\TextColumn::make('assigned_to')->getStateUsing(function (Model $record) {
                     $user = User::find($record->assigned_to);
-                    return $user ? $user->name : 'Unknown';
-                }),
+                    return $user ? $user->name : 'Unknown';                }),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime('d-M-Y'),
 

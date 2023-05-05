@@ -42,6 +42,7 @@ class UserResource extends Resource
                     ->tel()
                     ->required()
                     ->maxLength(20),
+
                 Select::make('roles')->relationship('roles', 'name')->preload()->multiple()->required(),
                 Forms\Components\TextInput::make('password')
                     ->password()
