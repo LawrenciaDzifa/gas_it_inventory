@@ -51,6 +51,7 @@ To contribute to the development of this app, you can follow these steps:
 
 <div class="row">
   <div class="col-md-6">
+    <img src="/screenshots/dashboard_dark.png" alt="Screenshot of the inventory app" />
     <img src="/screenshots/categories.png" alt="Screenshot of the inventory app" />
     <img src="/screenshots/requisition.png" alt="Screenshot of the inventory app" />
     <img src="/screenshots/request.png" alt="Screenshot of the inventory app" />
@@ -61,6 +62,7 @@ To contribute to the development of this app, you can follow these steps:
     <img src="/screenshots/stocks.png" alt="Screenshot of the inventory app" />
     <img src="/screenshots/stock_history.png" alt="Screenshot of the inventory app" />
       <h4>Light Theme</h4>
+    <img src="/screenshots/dashboard_light.png" alt="Screenshot of the inventory app" />
     <img src="/screenshots/light_theme.png" alt="Screenshot of the inventory app" />
   </div>
 </div>
