@@ -58,7 +58,7 @@ class RequisitionResource extends Resource
 
             ->columns([
                 TextColumn::make('id'),
-                TextColumn::make('user')
+                TextColumn::make('user')->sortable()
                     ->searchable()->getStateUsing(function (Model $record) {
                         return User::find($record->user)->name;
                     }),
@@ -79,7 +79,7 @@ class RequisitionResource extends Resource
                         'warning' => 'pending',
                         'success' => 'approved',
                         'danger' => 'declined',
-                    ])->searchable(),
+                    ])->sortable()->searchable(),
 
 
             ])
@@ -91,15 +91,7 @@ class RequisitionResource extends Resource
                     ->label('User')
                     ->placeholder('All Users')
                     ->default(null),
-                Tables\Filters\SelectFilter::make('status')
-                    ->options([
-                        'pending' => 'Pending',
-                        'approved' => 'Approved',
-                        'declined' => 'Declined',
-                    ])
-                    ->label('Status')
-                    ->placeholder('All Statuses')
-                    ->default(null),
+                    
 
             ])
             ->actions([

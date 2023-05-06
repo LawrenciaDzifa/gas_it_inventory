@@ -79,7 +79,7 @@ class RequisitionResource extends Resource
                         'warning' => 'pending',
                         'success' => 'approved',
                         'danger' => 'declined',
-                    ])->searchable(),
+                    ])->sortable()->searchable(),
 
 
             ])
