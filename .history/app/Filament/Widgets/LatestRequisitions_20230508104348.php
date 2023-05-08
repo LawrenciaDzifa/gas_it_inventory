@@ -21,7 +21,7 @@ class LatestRequisitions extends BaseWidget
     protected function getTableQuery(): Builder
     {
         if (Auth::user()->role == 'admin') {
-            return Requisition::query()->where('status', 'pending');
+            return Requisition::query()->where('status','pending');
         } else {
             return Requisition::query()->where('user', Auth::user()->id);
         }
@@ -43,7 +43,7 @@ class LatestRequisitions extends BaseWidget
             Tables\Columns\TextColumn::make('qty_requested'),
             Tables\Columns\TextColumn::make('msg'),
             Tables\Columns\TextColumn::make('created_at')
-                ->dateTime('d-M-Y'),
+            ->dateTime('d-M-Y'),
             Tables\Columns\BadgeColumn::make('status')->enum([
                 'pending' => 'Pending',
                 'approved' => 'Approved',
@@ -57,4 +57,23 @@ class LatestRequisitions extends BaseWidget
 
         ];
     }
+    public static function table(Table $table): Table
+{
+    return $table
+        ->actions([
+            Action::make('approve')
+                    ->label('Approve')
+                    ->icon('heroicon-o-check-circle')
+                    ->color('success')
+                    ->visible(auth()->user()->role == 'admin'),
+                Action::make('decline')
+                    ->label('Decline')
+                    ->icon('heroicon-o-x-circle')
+                    ->color('danger')
+                    ->visible(auth()->user()->role == 'admin'),
+                Actions\EditAction::make()->visible(auth()->user()->role == 'admin'),
+                Actions\DeleteAction::make()->visible(auth()->user()->role == 'admin')
+        ]);
+}
+
 }

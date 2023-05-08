@@ -120,21 +120,27 @@ class RequisitionResource extends Resource
                     ->label('Status')
                     ->placeholder('All Statuses')
                     ->default(null),
+
             ])
-            ->actions([
-                Action::make('approve')
-                    ->label('Approve')
-                    ->icon('heroicon-o-check-circle')
-                    ->color('success')
-                    ->visible(auth()->user()->role == 'admin'),
-                Action::make('decline')
-                    ->label('Decline')
-                    ->icon('heroicon-o-x-circle')
-                    ->color('danger')
-                    ->visible(auth()->user()->role == 'admin'),
-                Actions\EditAction::make()->visible(auth()->user()->role == 'admin'),
-                Actions\DeleteAction::make()->visible(auth()->user()->role == 'admin'),
-            ])
+            // only admins can perform actions
+            ->actions(
+                [
+                    
+                ]
+            )
+
+            // ->actions([
+            //     Action::make('approve')
+            //         ->label('Approve')
+            //         ->icon('heroicon-o-check-circle')
+            //         ->color('success'),
+            //     Action::make('decline')
+            //         ->label('Decline')
+            //         ->icon('heroicon-o-x-circle')
+            //         ->color('danger'),
+            //     Actions\EditAction::make(),
+            //     Actions\DeleteAction::make(),
+            // ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
             ]);

@@ -43,7 +43,7 @@ class StockHistoryResource extends Resource
                 TextColumn::make('item_name')->sortable()->searchable()->getStateUsing(function (Model $record) {
                     return Item::find($record->item_name)->name;
                 }),
-                TextColumn::make('category_name')->searchable()->getStateUsing(function (Model $record) {
+                TextColumn::make('category_name')-->searchable()->getStateUsing(function (Model $record) {
                     return Category::find($record->category_name)->name;
                 }),
                 TextColumn::make('quantity'),

@@ -21,7 +21,7 @@ class LatestRequisitions extends BaseWidget
     protected function getTableQuery(): Builder
     {
         if (Auth::user()->role == 'admin') {
-            return Requisition::query()->where('status', 'pending');
+            return Requisition::query()->where('status','pending');
         } else {
             return Requisition::query()->where('user', Auth::user()->id);
         }
@@ -43,7 +43,7 @@ class LatestRequisitions extends BaseWidget
             Tables\Columns\TextColumn::make('qty_requested'),
             Tables\Columns\TextColumn::make('msg'),
             Tables\Columns\TextColumn::make('created_at')
-                ->dateTime('d-M-Y'),
+            ->dateTime('d-M-Y')
             Tables\Columns\BadgeColumn::make('status')->enum([
                 'pending' => 'Pending',
                 'approved' => 'Approved',
