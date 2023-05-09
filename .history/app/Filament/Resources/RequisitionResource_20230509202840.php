@@ -151,7 +151,7 @@ class RequisitionResource extends Resource
                     ->visible(auth()->user()->role == 'admin'),
                 Action::make('decline')
                     ->label('Decline')
-                    ->icon('heroicon-o-x')
+                    ->icon('heroicon-o-x-circle')
                     ->color('danger')
                     ->action(
                         // update the status of the requisition to approved
