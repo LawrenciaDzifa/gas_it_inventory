@@ -135,6 +135,7 @@ class RequisitionResource extends Resource
                                 ]);
                                 // update stock qty in stock table by subtracting qty_requested
                                 $stock = Stock::where('item_name', $record->item_name)->first();
+                                
                                 $stock->update([
                                     'quantity' => $stock->quantity - $record->qty_requested,
                                 ]);

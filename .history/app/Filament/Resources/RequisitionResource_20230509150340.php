@@ -134,7 +134,8 @@ class RequisitionResource extends Resource
                                     'status' => 'approved',
                                 ]);
                                 // update stock qty in stock table by subtracting qty_requested
-                                $stock = Stock::where('item_name', $record->item_name)->first();
+                                $stock = Stock::where('item_id', $record->item_name)->first();
+                                dd($stock);
                                 $stock->update([
                                     'quantity' => $stock->quantity - $record->qty_requested,
                                 ]);

@@ -138,7 +138,7 @@ class RequisitionResource extends Resource
                                 $stock->update([
                                     'quantity' => $stock->quantity - $record->qty_requested,
                                 ]);
-                                // send sms to the user that the requisition has been approved
+                                // send sms to the user 
                                 $user = User::find($record->user);
                                 $phoneNumber = $user->phone;
                                 $userName = $user->name;

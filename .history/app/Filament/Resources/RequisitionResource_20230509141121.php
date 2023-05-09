@@ -6,7 +6,6 @@ use App\Filament\Resources\RequisitionResource\Pages;
 use App\Http\Controllers\SMSController;
 use App\Models\Item;
 use App\Models\Requisition;
-use App\Models\Stock;
 use App\Models\User;
 use FFI;
 use Filament\Forms;
@@ -121,23 +120,14 @@ class RequisitionResource extends Resource
                             // check the status of the requisition, if it is already approved, do nothing, if it is pending, update it to approved,if it is denied, show a popup message that it has been denied
                             if ($record->status == 'approved') {
                                 // show a modal that the requisition has already been approved
-                                Notification::make()
-                                    ->title('Requisition Already Approved')
-                                    ;
-                                ;
+                                Notification::make();
                             } elseif ($record->status == 'declined') {
-                                // show a modal that the requisition has already been approved
-                                Notification::make()
-                                    ->title('Requisition Already Declined');
+                                Flash::error('This requisition has been declined.');
                             } else {
                                 $record->update([
                                     'status' => 'approved',
                                 ]);
-                                // update stock qty in stock table by subtracting qty_requested
-                                $stock = Stock::where('item_name', $record->item_name)->first();
-                                $stock->update([
-                                    'quantity' => $stock->quantity - $record->qty_requested,
-                                ]);
+                                Flash::success('Requisition approved successfully.');
                                 // send sms to the user that the requisition has been approved
                                 $user = User::find($record->user);
                                 $phoneNumber = $user->phone;

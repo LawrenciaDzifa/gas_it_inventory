@@ -6,7 +6,6 @@ use App\Filament\Resources\RequisitionResource\Pages;
 use App\Http\Controllers\SMSController;
 use App\Models\Item;
 use App\Models\Requisition;
-use App\Models\Stock;
 use App\Models\User;
 use FFI;
 use Filament\Forms;
@@ -132,12 +131,12 @@ class RequisitionResource extends Resource
                             } else {
                                 $record->update([
                                     'status' => 'approved',
+
+
                                 ]);
                                 // update stock qty in stock table by subtracting qty_requested
-                                $stock = Stock::where('item_name', $record->item_name)->first();
-                                $stock->update([
-                                    'quantity' => $stock->quantity - $record->qty_requested,
-                                ]);
+                                
+                                Flash::success('Requisition approved successfully.');
                                 // send sms to the user that the requisition has been approved
                                 $user = User::find($record->user);
                                 $phoneNumber = $user->phone;
