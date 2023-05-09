@@ -60,6 +60,18 @@ class RequisitionResource extends Resource
                     ->required()
                     ->maxLength(255),
             ])
+            // ->afterSave(function (Requisition $requisition) {
+            //     // Get the user associated with the requisition
+            //     $user = $requisition->user;
+
+            //     // Get the phone number of the user
+            //     $phoneNumber = $user->phone;
+            //     $msg = 'Hello ' . $user->name . ', your requisition has been submitted successfully. You will be notified once it is approved.';
+
+            //     // Send an SMS notification to the user
+            //     $smsController = new SMSController();
+            //     $smsController->sendSMS($phoneNumber, $msg);
+            // })
         ;
     }
 
@@ -128,6 +140,7 @@ class RequisitionResource extends Resource
                             $msg = 'Hello ' . $userName . ', your requisition has been approved.';
                             $smsController = new SMSController();
                             $smsController->sendSMS($phoneNumber, $msg);
+                            return
                         }
                     )
 

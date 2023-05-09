@@ -7,7 +7,6 @@ use App\Http\Controllers\SMSController;
 use App\Models\Item;
 use App\Models\Requisition;
 use App\Models\User;
-use FFI;
 use Filament\Forms;
 use Filament\Forms\Components\Textarea as ComponentsTextarea;
 use Filament\Forms\Components\TextInput;
@@ -59,8 +58,18 @@ class RequisitionResource extends Resource
                 ComponentsTextarea::make('msg')
                     ->required()
                     ->maxLength(255),
-            ])
-        ;
+            ]);
+    }
+
+    public static function afterSave(Form $form,)
+    {
+
+        $sms = new SMSController();
+        $phone = Auth::user()->phone;
+        $msg = 'Your requisition of has been received and is pending approval. You will be notified once it is approved.';
+        $sms->sendSMS($phone, $msg);
+        Flash::success('Requisition created successfully');
+        return redirect()->route('requisitions.index');
     }
 
     public static function table(Table $table): Table
@@ -90,6 +99,8 @@ class RequisitionResource extends Resource
                         'success' => 'approved',
                         'danger' => 'declined',
                     ])->searchable(),
+
+
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('user')
@@ -114,36 +125,11 @@ class RequisitionResource extends Resource
                     ->label('Approve')
                     ->icon('heroicon-o-check-circle')
                     ->color('success')
-                    ->action(
-                        // update the status of the requisition to approved
-                        function (Model $record) {
-                            $record->update([
-                                'status' => 'approved',
-                            ]);
-                            // Get the user associated with the requisition and send an SMS notification to the user
-                            $user = Auth::user()->id;
-                            $userName= Auth::user()->name;
-                            // dd($user);
-                            $phoneNumber = Auth::user()->phone;
-                            $msg = 'Hello ' . $userName . ', your requisition has been approved.';
-                            $smsController = new SMSController();
-                            $smsController->sendSMS($phoneNumber, $msg);
-                        }
-                    )
-
                     ->visible(auth()->user()->role == 'admin'),
                 Action::make('decline')
                     ->label('Decline')
                     ->icon('heroicon-o-x-circle')
                     ->color('danger')
-                    ->action(
-                        // update the status of the requisition to approved
-                        function (Model $record) {
-                            $record->update([
-                                'status' => 'declined',
-                            ]);
-                        }
-                    )
                     ->visible(auth()->user()->role == 'admin'),
                 Actions\EditAction::make()->visible(auth()->user()->role == 'admin'),
                 Actions\DeleteAction::make()->visible(auth()->user()->role == 'admin'),

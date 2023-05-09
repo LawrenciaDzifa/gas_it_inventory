@@ -60,6 +60,18 @@ class RequisitionResource extends Resource
                     ->required()
                     ->maxLength(255),
             ])
+            // ->afterSave(function (Requisition $requisition) {
+            //     // Get the user associated with the requisition
+            //     $user = $requisition->user;
+
+            //     // Get the phone number of the user
+            //     $phoneNumber = $user->phone;
+            //     $msg = 'Hello ' . $user->name . ', your requisition has been submitted successfully. You will be notified once it is approved.';
+
+            //     // Send an SMS notification to the user
+            //     $smsController = new SMSController();
+            //     $smsController->sendSMS($phoneNumber, $msg);
+            // })
         ;
     }
 
@@ -121,13 +133,14 @@ class RequisitionResource extends Resource
                                 'status' => 'approved',
                             ]);
                             // Get the user associated with the requisition and send an SMS notification to the user
-                            $user = Auth::user()->id;
-                            $userName= Auth::user()->name;
-                            // dd($user);
-                            $phoneNumber = Auth::user()->phone;
-                            $msg = 'Hello ' . $userName . ', your requisition has been approved.';
+                            $user =Auth::user()->find($record->user);
+                            $phoneNumber = $user->phone;
+                            dd($phoneNumber);
+                            $msg = 'Hello ' . $user->name . ', your requisition has been approved.';
                             $smsController = new SMSController();
                             $smsController->sendSMS($phoneNumber, $msg);
+                            return Flash::success('Requisition approved successfully.');
+
                         }
                     )
 
@@ -142,6 +155,7 @@ class RequisitionResource extends Resource
                             $record->update([
                                 'status' => 'declined',
                             ]);
+
                         }
                     )
                     ->visible(auth()->user()->role == 'admin'),
