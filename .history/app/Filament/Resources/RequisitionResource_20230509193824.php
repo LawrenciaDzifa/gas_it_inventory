@@ -118,6 +118,7 @@ class RequisitionResource extends Resource
                     ->action(
                         // update the status of the requisition to approved
                         function (Model $record) {
+                            // check the status of the requisition, if it is already approved, do nothing, if it is pending, update it to approved,if it is denied, show a popup message that it has been denied
                             if ($record->status == 'pending') {
                                 $record->update([
                                     'status' => 'approved',
@@ -134,8 +135,14 @@ class RequisitionResource extends Resource
                                 $msg = 'Hello ' . $userName . ', your requisition has been approved. Kindly pick up you item(s) from the store. Thank you.';
                                 $sms = new SMSController();
                                 $sms->sendSMS($msg, $phoneNumber);
+
+                                    //Notification::make()
+                                    // ->title('Saved successfully')
+                                    // ->success()
+                                    // ->send();
                                 ;
                             } elseif ($record->status == 'declined') {
+                                // show a modal that the requisition has already been approved
                                 Notification::make()
                                     ->title('Request already declined')
                                     ->danger()
@@ -156,29 +163,9 @@ class RequisitionResource extends Resource
                     ->action(
                         // update the status of the requisition to approved
                         function (Model $record) {
-                            if($record->status == 'pending'){
-                                $record->update([
-                                    'status' => 'declined',
-                                ]);
-                                // send sms to the user that the requisition has been declined
-                                $user = User::find($record->user);
-                                $phoneNumber = $user->phone;
-                                $userName = $user->name;
-                                $msg = 'Hello ' . $userName . ', your requisition has been declined. Kindly contact the store manager for more information. Thank you.';
-                                $sms = new SMSController();
-                                $sms->sendSMS($msg, $phoneNumber);
-                            } elseif ($record->status == 'approved') {
-                                Notification::make()
-                                    ->title('Request already approved')
-                                    ->danger()
-                                    ->send();
-                            } else {
-                                Notification::make()
-                                    ->title('Request already declined')
-                                    ->danger()
-                                    ->send();
-                            }
-
+                            $record->update([
+                                'status' => 'declined',
+                            ]);
                         }
                     )
                     ->visible(auth()->user()->role == 'admin'),

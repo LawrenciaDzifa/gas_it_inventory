@@ -136,6 +136,7 @@ class RequisitionResource extends Resource
                                 $sms->sendSMS($msg, $phoneNumber);
                                 ;
                             } elseif ($record->status == 'declined') {
+                                // show a modal that the requisition has already been approved
                                 Notification::make()
                                     ->title('Request already declined')
                                     ->danger()
@@ -168,6 +169,7 @@ class RequisitionResource extends Resource
                                 $sms = new SMSController();
                                 $sms->sendSMS($msg, $phoneNumber);
                             } elseif ($record->status == 'approved') {
+                                // show a modal that the requisition has already been approved
                                 Notification::make()
                                     ->title('Request already approved')
                                     ->danger()
@@ -178,7 +180,7 @@ class RequisitionResource extends Resource
                                     ->danger()
                                     ->send();
                             }
-
+                            ;
                         }
                     )
                     ->visible(auth()->user()->role == 'admin'),

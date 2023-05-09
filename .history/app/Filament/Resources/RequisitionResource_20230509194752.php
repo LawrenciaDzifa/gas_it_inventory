@@ -136,6 +136,7 @@ class RequisitionResource extends Resource
                                 $sms->sendSMS($msg, $phoneNumber);
                                 ;
                             } elseif ($record->status == 'declined') {
+                                // show a modal that the requisition has already been approved
                                 Notification::make()
                                     ->title('Request already declined')
                                     ->danger()
