@@ -62,7 +62,6 @@ class RequisitionResource extends Resource
                     ->required()
                     ->maxLength(255),
             ]);
-    
     }
 
     public static function table(Table $table): Table

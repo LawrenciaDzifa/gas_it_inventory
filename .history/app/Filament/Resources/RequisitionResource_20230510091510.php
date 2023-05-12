@@ -62,7 +62,6 @@ class RequisitionResource extends Resource
                     ->required()
                     ->maxLength(255),
             ]);
-    
     }
 
     public static function table(Table $table): Table
@@ -154,7 +153,6 @@ class RequisitionResource extends Resource
                     ->icon('heroicon-o-x')
                     ->color('danger')
                     ->action(
-                        // update the status of the requisition to approved
                         function (Model $record) {
                             if ($record->status == 'pending') {
                                 $record->update([

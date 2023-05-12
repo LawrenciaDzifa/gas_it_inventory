@@ -61,8 +61,9 @@ class RequisitionResource extends Resource
                 ComponentsTextarea::make('msg')
                     ->required()
                     ->maxLength(255),
-            ]);
-    
+            ])
+            ->create_function
+            ;
     }
 
     public static function table(Table $table): Table

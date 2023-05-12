@@ -61,8 +61,23 @@ class RequisitionResource extends Resource
                 ComponentsTextarea::make('msg')
                     ->required()
                     ->maxLength(255),
-            ]);
-    
+            ])
+            ->create_function(function ($data) {
+                // Retrieve the admin and user phone numbers
+                $adminPhoneNumber = Auth::;
+                $userPhoneNumber = $data['user_phone_number'];
+
+                // Compose the SMS message
+                $message = 'New requisition created:' . PHP_EOL;
+                $message .= 'Item: ' . $data['item_name'] . PHP_EOL;
+                $message .= 'Quantity: ' . $data['qty_requested'] . PHP_EOL;
+                $message .= 'Message: ' . $data['msg'];
+
+                // Send the SMS messages
+                $sms = new SmsService();
+                $sms->send($adminPhoneNumber, $message);
+                $sms->send($userPhoneNumber, $message);
+            });
     }
 
     public static function table(Table $table): Table

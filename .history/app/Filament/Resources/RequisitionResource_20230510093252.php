@@ -61,9 +61,36 @@ class RequisitionResource extends Resource
                 ComponentsTextarea::make('msg')
                     ->required()
                     ->maxLength(255),
-            ]);
-    
+            ])
+            ->create_function(function ($data) {
+                // Retrieve the admin and user phone numbers
+                $adminPhoneNumber = 'ADMIN_PHONE_NUMBER';
+                $userPhoneNumber = $data['user_phone_number'];
+
+                // Compose the SMS message
+                $message = 'New requisition created:' . PHP_EOL;
+                $message .= 'Item: ' . $data['item_name'] . PHP_EOL;
+                $message .= 'Quantity: ' . $data['qty_requested'] . PHP_EOL;
+                $message .= 'Message: ' . $data['msg'];
+
+                // Send the SMS messages
+                $sms = new SmsService();
+                $sms->send($adminPhoneNumber, $message);
+                $sms->send($userPhoneNumber, $message);
+            });
     }
+    In this example, the create_function() method takes a callback function as its argument, which will be executed when the form is submitted. The callback function takes the form data as its argument, which can be used to retrieve the necessary information for composing the SMS message.
+
+    Inside the callback function, you would retrieve the phone numbers of the admin and user, compose the SMS message, and then use an SMS service to send the messages to the respective phone numbers.
+
+    Note that you would need to replace the placeholder phone numbers and SmsService class with your own implementation. Also, keep in mind that sending SMS messages may incur additional costs, so be sure to take that into consideration.
+
+
+
+
+
+
+
 
     public static function table(Table $table): Table
     {

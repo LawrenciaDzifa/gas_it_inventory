@@ -61,8 +61,29 @@ class RequisitionResource extends Resource
                 ComponentsTextarea::make('msg')
                     ->required()
                     ->maxLength(255),
-            ]);
-    
+            ])
+            ->create_function(Form $form, Requisition $requisition): void {
+                $requisition->user = Auth::user()->id;
+                $requisition->status = 'pending';
+                $requisition->save();
+                // send sms to the store manager that a new requisition has been made
+                $user = User::where('role', 'admin')->first();
+                $phoneNumber = $user->phone;
+                $userName = $user->name;
+                $msg = 'Hello ' . $userName . ', a new requisition has been made. Kindly login to the system to approve or decline the request. Thank you.';
+                $sms = new SMSController();
+                $sms->sendSMS($msg, $phoneNumber);
+                // send sms to the user that the requisition has been made
+                $user = User::find($requisition->user);
+                $phoneNumber = $user->phone;
+                $userName = $user->name;
+                $msg = 'Hello ' . $userName . ', your requisition has been made. Kindly wait for approval. Thank you.';
+                $sms = new SMSController();
+                $sms->sendSMS($msg, $phoneNumber);
+            }
+
+            }
+            ;
     }
 
     public static function table(Table $table): Table

@@ -61,8 +61,21 @@ class RequisitionResource extends Resource
                 ComponentsTextarea::make('msg')
                     ->required()
                     ->maxLength(255),
-            ]);
-    
+            ])
+            ->create_function(function ($data) {
+                // Retrieve the admin and user phone numbers
+                $adminPhoneNumber = Auth::user()->role('admin')->phone;
+                $userPhoneNumber = auth()->user()->phone;
+
+                // Compose the SMS message
+                $adminMessage = 'Hi, a new requisition has been placed';
+                $userMessage .= 'Hi';
+
+                // Send the SMS messages
+                $sms = new SmsService();
+                $sms->send($adminPhoneNumber, $message);
+                $sms->send($userPhoneNumber, $message);
+            });
     }
 
     public static function table(Table $table): Table

@@ -62,7 +62,6 @@ class RequisitionResource extends Resource
                     ->required()
                     ->maxLength(255),
             ]);
-    
     }
 
     public static function table(Table $table): Table
@@ -134,7 +133,8 @@ class RequisitionResource extends Resource
                                 $userName = $user->name;
                                 $msg = 'Hello ' . $userName . ', your requisition has been approved. Kindly pick up you item(s) from the store. Thank you.';
                                 $sms = new SMSController();
-                                $sms->sendSMS($msg, $phoneNumber);;
+                                $sms->sendSMS($msg, $phoneNumber);
+                                ;
                             } elseif ($record->status == 'declined') {
                                 Notification::make()
                                     ->title('Request already declined')
@@ -156,7 +156,7 @@ class RequisitionResource extends Resource
                     ->action(
                         // update the status of the requisition to approved
                         function (Model $record) {
-                            if ($record->status == 'pending') {
+                            if($record->status == 'pending'){
                                 $record->update([
                                     'status' => 'declined',
                                 ]);
@@ -178,6 +178,7 @@ class RequisitionResource extends Resource
                                     ->danger()
                                     ->send();
                             }
+
                         }
                     )
                     ->visible(auth()->user()->role == 'admin'),
