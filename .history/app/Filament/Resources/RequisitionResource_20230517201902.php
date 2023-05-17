@@ -46,7 +46,6 @@ class RequisitionResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-
             ->schema([
                 Forms\Components\Select::make('item_name')
                     ->options(
@@ -63,6 +62,7 @@ class RequisitionResource extends Resource
                     ->required()
                     ->maxLength(255),
             ])
+            ->a
             ;
     }
 

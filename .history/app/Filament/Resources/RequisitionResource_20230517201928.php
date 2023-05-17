@@ -46,7 +46,6 @@ class RequisitionResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-
             ->schema([
                 Forms\Components\Select::make('item_name')
                     ->options(
@@ -63,6 +62,20 @@ class RequisitionResource extends Resource
                     ->required()
                     ->maxLength(255),
             ])
+            ->save(function (Requisition $requisition) {
+                $requisition->user = Auth::user()->id;
+                $requisition->status = 'pending';
+                $requisition->save();
+
+                $stock = Stock::where('item_name', $requisition->item_name)->first();
+                $stock->qty_available = $stock->qty_available - $requisition->qty_requested;
+                $stock->save();
+
+                $user = User::find($requisition->user);
+                $item = Item::find($requisition->item_name);
+                $msg = "Your requisition for $item->name has been submitted successfully. You will be notified when it is approved.";
+                SMSController::sendSMS($user->phone, $msg);
+            });
             ;
     }
 

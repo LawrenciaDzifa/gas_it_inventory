@@ -46,7 +46,13 @@ class RequisitionResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-
+            // ->mutateResourceAfterCreate(function (Requisition $requisition) {
+            //     $notifier = new SMSController();
+            //     $user = Auth::user();
+            //     $phone = $user->phone;
+            //     $msg = "Hi, your requisition has been submitted and is pending review. You will be notified of the next status soon. Thank you.";
+            //     $notifier->send($phone, $msg);
+            // })
             ->schema([
                 Forms\Components\Select::make('item_name')
                     ->options(
@@ -64,6 +70,7 @@ class RequisitionResource extends Resource
                     ->maxLength(255),
             ])
             ;
+
     }
 
     public static function table(Table $table): Table

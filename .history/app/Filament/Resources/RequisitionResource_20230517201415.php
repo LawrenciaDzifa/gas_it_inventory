@@ -46,7 +46,6 @@ class RequisitionResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-
             ->schema([
                 Forms\Components\Select::make('item_name')
                     ->options(
@@ -62,8 +61,7 @@ class RequisitionResource extends Resource
                 ComponentsTextarea::make('msg')
                     ->required()
                     ->maxLength(255),
-            ])
-            ;
+            ]);
     }
 
     public static function table(Table $table): Table
@@ -160,7 +158,7 @@ class RequisitionResource extends Resource
                                 $record->update([
                                     'status' => 'declined',
                                 ]);
-                                $user = User::find($record->user);
+s                                $user = User::find($record->user);
                                 $phoneNumber = $user->phone;
                                 $userName = $user->name;
                                 $msg = 'Hello ' . $userName . ', your requisition has been declined. Kindly contact the store manager for more information. Thank you.';
