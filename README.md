@@ -4,7 +4,7 @@
 	<img src="/screenshots/login.png" alt="Screenshot of the inventory app" />
 
 
-This is an inventory management app built with Laravel. It allows you to create, read, update, and delete inventory items, as well as view a dashboard with summary statistics(still in development). Users are able to make requisitions for items and get SMS notifications on the status of requisitions.
+This is an inventory management app built with Laravel. It allows you to create, read, update, and delete inventory items, as well as view a dashboard with summary statistics. Users are able to make requisitions for items and get SMS notifications on the status of requisitions.
 
 <h2>Requirements</h2>
 	<ul>
