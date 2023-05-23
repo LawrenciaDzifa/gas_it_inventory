@@ -91,8 +91,7 @@ class AssignmentResource extends Resource
                     ->placeholder('All Users'),
             ])
             ->actions([
-                Tables\Actions\EditAction::make()
-                ->visible(auth()->user()->role == 'admin'),
+                Tables\Actions\EditAction::make(),
                 DeleteAction::make(),
             ])
             ->bulkActions([

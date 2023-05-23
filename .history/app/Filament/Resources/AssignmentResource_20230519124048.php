@@ -92,7 +92,7 @@ class AssignmentResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make()
-                ->visible(auth()->user()->role == 'admin'),
+                ->visible(),
                 DeleteAction::make(),
             ])
             ->bulkActions([

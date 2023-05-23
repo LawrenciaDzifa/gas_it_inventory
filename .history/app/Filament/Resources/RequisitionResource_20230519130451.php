@@ -183,6 +183,52 @@ class RequisitionResource extends Resource
                     ->visible(auth()->user()->role == 'admin'),
                 Actions\EditAction::make()->visible(auth()->user()->role == 'admin'),
                 Actions\DeleteAction::make()->visible(auth()->user()->role == 'admin'),
+                // i want to have  more icon buttons for each row
+                // Actions\MoreAction::make()
+                //     ->label('More')
+                //     ->icon('heroicon-o-dots-vertical')
+                //     ->color('primary')
+                //     ->action(
+                //         function (Model $record) {
+                //             return [
+                //                 Action::make('approve')
+                //                     ->label('Approve')
+                //                     ->icon('heroicon-o-check')
+
+                //                     ->color('success')
+                //                     ->action(
+                //                         // update the status of the requisition to approved
+                //                         function (Model $record) {
+                //                             if ($record->status == 'pending') {
+                //                                 $record->update([
+                //                                     'status' => 'approved',
+                //                                 ]);
+                //                                 // update stock qty in stock table by subtracting qty_requested
+                //                                 $stock = Stock::where('item_name', $record->item_name)->first();
+                //                                 $stock->update([
+                //                                     'quantity' => $stock->quantity - $record->qty_requested,
+                //                                 ]);
+                //                                 // send sms to the user that the requisition has been approved
+                //                                 $user = User::find($record->user);
+                //                                 $phoneNumber = $user->phone;
+                //                                 $userName = $user->name;
+                //                                 $msg = 'Hello ' . $userName . ', your requisition has been approved. Kindly pick up you item(s) from the store. Thank you.';
+                //                                 $sms = new SMSController();
+                //                                 $sms->sendSMS($msg, $phoneNumber);;
+                //                             } elseif ($record->status == 'declined') {
+                //                                 Notification::make()
+                //                                     ->title('Request already declined')
+                //                                     ->danger()
+                //                                     ->send();
+                //                             } else {
+                //                                 Notification::make()
+                //                                     ->title('Request already approved')
+                //                                     ->danger()
+                //                                     ->send();
+
+
+
+
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

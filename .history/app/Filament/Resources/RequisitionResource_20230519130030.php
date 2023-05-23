@@ -112,8 +112,6 @@ class RequisitionResource extends Resource
                     ->default(null),
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
-
                 Action::make('approve')
                     ->label('Approve')
                     ->icon('heroicon-o-check')

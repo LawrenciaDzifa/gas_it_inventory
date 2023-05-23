@@ -183,6 +183,28 @@ class RequisitionResource extends Resource
                     ->visible(auth()->user()->role == 'admin'),
                 Actions\EditAction::make()->visible(auth()->user()->role == 'admin'),
                 Actions\DeleteAction::make()->visible(auth()->user()->role == 'admin'),
+                // i want to have  more icon buttons for each row
+                Action::make('more')
+                    ->label('More ')
+                    ->icon('heroicon-o-dots-vertical')
+                    ->color('primary')
+                    ->action(
+                        function (Model $record) {
+                            return [
+                                // a drop down card of varioud actions
+                                    Dropdown::make()
+                                    ->label('Actions')
+                                    ->icon('heroicon-o-dots-vertical')
+                                    
+                            ];
+                        }
+                    )
+
+
+
+
+
+
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

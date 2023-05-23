@@ -62,7 +62,8 @@ class RequisitionResource extends Resource
                 ComponentsTextarea::make('msg')
                     ->required()
                     ->maxLength(255),
-            ]);
+            ])
+            ;
     }
 
     public static function table(Table $table): Table
@@ -112,8 +113,6 @@ class RequisitionResource extends Resource
                     ->default(null),
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
-
                 Action::make('approve')
                     ->label('Approve')
                     ->icon('heroicon-o-check')
@@ -202,6 +201,7 @@ class RequisitionResource extends Resource
             'index' => Pages\ListRequisitions::route('/'),
             'create' => Pages\CreateRequisition::route('/create'),
             'view' => Pages\ViewRequisition::route('/{record}'),
+
             'edit' => Pages\EditRequisition::route('/{record}/edit'),
         ];
     }

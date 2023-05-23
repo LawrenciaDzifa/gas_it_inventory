@@ -112,8 +112,6 @@ class RequisitionResource extends Resource
                     ->default(null),
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
-
                 Action::make('approve')
                     ->label('Approve')
                     ->icon('heroicon-o-check')
@@ -183,6 +181,7 @@ class RequisitionResource extends Resource
                     ->visible(auth()->user()->role == 'admin'),
                 Actions\EditAction::make()->visible(auth()->user()->role == 'admin'),
                 Actions\DeleteAction::make()->visible(auth()->user()->role == 'admin'),
+                Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

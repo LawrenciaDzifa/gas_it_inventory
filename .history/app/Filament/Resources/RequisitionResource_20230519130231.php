@@ -183,6 +183,8 @@ class RequisitionResource extends Resource
                     ->visible(auth()->user()->role == 'admin'),
                 Actions\EditAction::make()->visible(auth()->user()->role == 'admin'),
                 Actions\DeleteAction::make()->visible(auth()->user()->role == 'admin'),
+                // make more actions here
+                
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

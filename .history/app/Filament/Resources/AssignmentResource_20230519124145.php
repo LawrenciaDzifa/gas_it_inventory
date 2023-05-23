@@ -92,7 +92,9 @@ class AssignmentResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make()
-                ->visible(auth()->user()->role == 'admin'),
+                ->visible(function (Model $record) {
+                    return $record->assigned_to == Auth::user()->id || Auth::user()->role == 'admin';
+                }),
                 DeleteAction::make(),
             ])
             ->bulkActions([
