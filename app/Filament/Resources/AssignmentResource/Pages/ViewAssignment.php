@@ -4,19 +4,16 @@ namespace App\Filament\Resources\AssignmentResource\Pages;
 
 use App\Filament\Resources\AssignmentResource;
 use Filament\Pages\Actions;
-use Filament\Resources\Pages\ListRecords;
+use Filament\Resources\Pages\ViewRecord;
 
-class ListAssignments extends ListRecords
+class ViewAssignment extends ViewRecord
 {
     protected static string $resource = AssignmentResource::class;
 
     protected function getActions(): array
     {
         return [
-
-            Actions\CreateAction::make()->visible(function () {
-                return auth()->user()->role == 'admin';
-            }),
+            // Actions\EditAction::make(),
         ];
     }
 }
