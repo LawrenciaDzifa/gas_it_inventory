@@ -53,7 +53,7 @@ To contribute to the development of this app, you can follow these steps:
   <div class="col-md-6">
     <img src="/screenshots/dashboard_dark.png" alt="Screenshot of the inventory app" />
     <img src="/screenshots/categories.png" alt="Screenshot of the inventory app" />
-    <img src="/screenshots/requests.png" alt="Screenshot of the inventory app" />
+    <img src="/screenshots/requisitions.png" alt="Screenshot of the inventory app" />
     <img src="/screenshots/request.png" alt="Screenshot of the inventory app" />
 
   </div>
