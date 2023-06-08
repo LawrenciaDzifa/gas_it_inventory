@@ -69,7 +69,7 @@ class RequisitionResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id'),
+                TextColumn::make('id')->toggleable(),
                 TextColumn::make('user')
                     ->searchable()->getStateUsing(function (Model $record) {
                         return User::find($record->user)->name;
@@ -79,7 +79,7 @@ class RequisitionResource extends Resource
                 }),
                 TextColumn::make('qty_requested'),
                 TextColumn::make('msg'),
-                Tables\Columns\TextColumn::make('created_at')
+                Tables\Columns\TextColumn::make('created_at')->toggleable()
                     ->dateTime('d-M-Y'),
                 BadgeColumn::make('status')
                     ->enum([
@@ -112,8 +112,6 @@ class RequisitionResource extends Resource
                     ->default(null),
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
-
                 Action::make('approve')
                     ->label('Approve')
                     ->icon('heroicon-o-check')
@@ -134,7 +132,7 @@ class RequisitionResource extends Resource
                                 $user = User::find($record->user);
                                 $phoneNumber = $user->phone;
                                 $userName = $user->name;
-                                $msg = 'Hello ' . $userName . ', your requisition has been approved. Kindly pick up you item(s) from the store. Thank you.';
+                                $msg = 'Dear ' . $userName . ', your requisition has been approved. Kindly pick up you item(s) from the store. Thank you.';
                                 $sms = new SMSController();
                                 $sms->sendSMS($msg, $phoneNumber);;
                             } elseif ($record->status == 'declined') {
@@ -164,7 +162,7 @@ class RequisitionResource extends Resource
                                 $user = User::find($record->user);
                                 $phoneNumber = $user->phone;
                                 $userName = $user->name;
-                                $msg = 'Hello ' . $userName . ', your requisition has been declined. Kindly contact the store manager for more information. Thank you.';
+                                $msg = 'Dear ' . $userName . ', your requisition has been declined. Kindly contact the store manager for more information. Thank you.';
                                 $sms = new SMSController();
                                 $sms->sendSMS($msg, $phoneNumber);
                             } elseif ($record->status == 'approved') {
@@ -181,6 +179,7 @@ class RequisitionResource extends Resource
                         }
                     )
                     ->visible(auth()->user()->role == 'admin'),
+                Tables\Actions\ViewAction::make()->color('warning'),
                 Actions\EditAction::make()->visible(auth()->user()->role == 'admin'),
                 Actions\DeleteAction::make()->visible(auth()->user()->role == 'admin'),
             ])
