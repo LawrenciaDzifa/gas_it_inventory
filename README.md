@@ -24,7 +24,7 @@ This is an inventory management app built with Laravel. It allows you to create,
 	</ol>
 
 <h2>Usage</h2>
-To use the app, visit <code>http://localhost:8000</code> in your web browser. You will be presented with a login screen. Use the following credentials to log in:
+To use the app, visit <code>http://localhost:8000/admin</code> in your web browser. You will be presented with a login screen. Use the following credentials to log in:
 <ul>
 		<li>Email: <code>admin@example.com</code></li>
 		<li>Password: <code>password</code></li>
