@@ -1,6 +1,6 @@
 
 
-<h1>Laravel Inventory App</h1>
+<h1> Inventory Management Application</h1>
 	<img src="/screenshots/login.png" alt="Screenshot of the inventory app" />
 
 
