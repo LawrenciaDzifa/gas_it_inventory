@@ -36,6 +36,17 @@ To use the app, visit <code>http://localhost:8000/admin</code> in your web brows
 		<li>Email: inmgtsystestuser@gmail.com</li>
 		<li>Password: password</li>
 </ul>
+
+<ul>
+		<li>Email: admin@example.com</li>
+		<li>Password: <code>password</code></li>
+	</ul>
+ <ul>
+        <h4>As User</h4>
+
+		<li>Email: inmgtsystestuser@gmail.com</li>
+		<li>Password: password</li>
+	</ul>
 Once you're logged in, you can create, edit, and delete inventory items from the dashboard.
 
 <h2>Development</h2>
