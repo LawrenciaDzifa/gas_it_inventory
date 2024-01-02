@@ -26,7 +26,16 @@ This is an inventory management app built with Laravel. It allows you to create,
 <h2>Usage</h2>
 To use the app, visit <code>http://localhost:8000/admin</code> in your web browser. You will be presented with a login screen. Use the following credentials to log in:
 <ul>
+        <h4>As Admin</h4>
+
 		<li>Email: <code>admin@example.com</code></li>
+		<li>Password: <code>password</code></li>
+	</ul>
+ <ul>
+        <h4>As User</h4>
+
+		<li>Email: <code>inmgtsystestuser@gmail.com
+</code></li>
 		<li>Password: <code>password</code></li>
 	</ul>
 Once you're logged in, you can create, edit, and delete inventory items from the dashboard.
